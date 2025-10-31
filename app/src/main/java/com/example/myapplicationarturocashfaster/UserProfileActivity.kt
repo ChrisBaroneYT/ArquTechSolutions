@@ -4,15 +4,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import java.util.*
 
@@ -21,20 +18,14 @@ class UserProfileActivity : AppCompatActivity() {
     private lateinit var tvDashboardWelcome: TextView
     private lateinit var tvDashboardUserName: TextView
     private lateinit var tvDashboardUserEmail: TextView
-    private lateinit var tvBookingsCount: TextView
-    private lateinit var tvServicesCount: TextView
-    private lateinit var btnBookService: Button
-    private lateinit var btnMyBookings: Button
     private lateinit var btnLogout: ImageButton
-    private lateinit var recentActivityRecyclerView: RecyclerView
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var activityAdapter: ActivityAdapter
 
-    // Variables para navegación
-    private lateinit var cardServices: LinearLayout
-    private lateinit var cardBookings: LinearLayout
-    private lateinit var cardProfile: LinearLayout
-    private lateinit var cardSettings: LinearLayout
+    // Variables para navegación - ACTUALIZADAS
+    private lateinit var cardServices: CardView
+    private lateinit var cardContact: CardView
+    private lateinit var cardHome: CardView
+    private lateinit var cardSettings: CardView
     private lateinit var ivUserProfile: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,8 +38,14 @@ class UserProfileActivity : AppCompatActivity() {
             setupUserInfo()
             setupListeners()
             setupNavigationCards()
-            setupRecentActivity()
             loadUserProfileImage()
+
+            // ✅ DEBUG: Verificar que cardSettings se inicializó
+            if (::cardSettings.isInitialized) {
+                Log.d("DEBUG", "✅ cardSettings inicializado correctamente")
+            } else {
+                Log.e("DEBUG", "❌ cardSettings NO se inicializó")
+            }
 
             Log.d("DEBUG", "✅ UserProfile cargado exitosamente")
 
@@ -62,19 +59,23 @@ class UserProfileActivity : AppCompatActivity() {
         tvDashboardWelcome = findViewById(R.id.tvDashboardWelcome)
         tvDashboardUserName = findViewById(R.id.tvDashboardUserName)
         tvDashboardUserEmail = findViewById(R.id.tvDashboardUserEmail)
-        tvBookingsCount = findViewById(R.id.tvBookingsCount)
-        tvServicesCount = findViewById(R.id.tvServicesCount)
-        btnBookService = findViewById(R.id.btnBookService)
-        btnMyBookings = findViewById(R.id.btnMyBookings)
         btnLogout = findViewById(R.id.btnLogout)
-        recentActivityRecyclerView = findViewById(R.id.recentActivityRecyclerView)
 
-        // Inicializar vistas de navegación
+        // Inicializar vistas de navegación - ACTUALIZADAS
         ivUserProfile = findViewById(R.id.ivUserProfile)
         cardServices = findViewById(R.id.cardServices)
-        cardBookings = findViewById(R.id.cardBookings)
-        cardProfile = findViewById(R.id.cardProfile)
+        cardContact = findViewById(R.id.cardContact)
+        cardHome = findViewById(R.id.cardHome)
         cardSettings = findViewById(R.id.cardSettings)
+
+        // ❌ ELIMINADOS: Estos IDs ya no existen en el XML
+        // tvBookingsCount = findViewById(R.id.tvBookingsCount)
+        // tvServicesCount = findViewById(R.id.tvServicesCount)
+        // btnBookService = findViewById(R.id.btnBookService)
+        // btnMyBookings = findViewById(R.id.btnMyBookings)
+        // recentActivityRecyclerView = findViewById(R.id.recentActivityRecyclerView)
+        // cardBookings = findViewById(R.id.cardBookings)
+        // cardProfile = findViewById(R.id.cardProfile)
     }
 
     private fun setupSharedPreferences() {
@@ -96,9 +97,9 @@ class UserProfileActivity : AppCompatActivity() {
             tvDashboardUserEmail.text = email
             tvDashboardWelcome.text = getString(R.string.welcome_back, formattedUsername)
 
-            // Mostrar estadísticas (datos de ejemplo)
-            tvBookingsCount.text = "2"
-            tvServicesCount.text = "5"
+            // ❌ ELIMINADO: Estadísticas ya no se muestran
+            // tvBookingsCount.text = "2"
+            // tvServicesCount.text = "5"
 
         } else {
             // Usuario no logueado - redirigir a login
@@ -121,51 +122,51 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        btnBookService.setOnClickListener {
-            val intent = Intent(this, ServiceDetailActivity::class.java)
-            startActivity(intent)
-        }
-
-        // ✅ CORREGIDO: btnMyBookings ahora va a ContactActivity
-        btnMyBookings.setOnClickListener {
-            val intent = Intent(this, ContactActivity::class.java)
-            startActivity(intent)
-        }
+        // ❌ ELIMINADOS: Botones que ya no existen
+        // btnBookService.setOnClickListener {
+        //     val intent = Intent(this, ServiceDetailActivity::class.java)
+        //     startActivity(intent)
+        // }
+        //
+        // btnMyBookings.setOnClickListener {
+        //     val intent = Intent(this, ContactActivity::class.java)
+        //     startActivity(intent)
+        // }
 
         btnLogout.setOnClickListener {
             showLogoutConfirmation()
         }
-
-        // ✅ ELIMINADO: setupBottomNavigation() ya no existe
     }
 
-    // ✅ CORREGIDO: Configurar tarjetas de navegación
+    // ✅ ACTUALIZADO: Configurar tarjetas de navegación (CONFIGURACIÓN FUNCIONAL)
     private fun setupNavigationCards() {
         cardServices.setOnClickListener {
+            Log.d("DEBUG", "🎯 Botón Servicios presionado")
             val intent = Intent(this, ServiceDetailActivity::class.java)
             startActivity(intent)
         }
 
-        // ✅ CORREGIDO: Ahora va a ContactActivity
-        cardBookings.setOnClickListener {
+        cardContact.setOnClickListener {
+            Log.d("DEBUG", "🎯 Botón Contacto presionado")
             val intent = Intent(this, ContactActivity::class.java)
             startActivity(intent)
         }
 
-        // ✅ CORREGIDO: Ahora va a MainActivity (Landing)
-        cardProfile.setOnClickListener {
+        cardHome.setOnClickListener {
+            Log.d("DEBUG", "🎯 Botón Inicio presionado")
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish() // Cierra esta actividad
+            finish()
         }
 
         cardSettings.setOnClickListener {
+            // ✅ CONFIGURACIÓN COMPLETAMENTE FUNCIONAL
+            Log.d("DEBUG", "🎯 Botón Configuración presionado - Abriendo SettingsActivity")
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 
         ivUserProfile.setOnClickListener {
-            // Ya estamos en el perfil, no hacer nada o mostrar mensaje
             Toast.makeText(this, "Ya estás en tu perfil", Toast.LENGTH_SHORT).show()
         }
     }
@@ -199,42 +200,6 @@ class UserProfileActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
-    }
-
-    private fun setupRecentActivity() {
-        val recentActivities = createSampleActivities()
-        activityAdapter = ActivityAdapter(recentActivities)
-
-        recentActivityRecyclerView.layoutManager = LinearLayoutManager(this)
-        recentActivityRecyclerView.adapter = activityAdapter
-
-        Log.d("DEBUG", "✅ Actividad reciente configurada con ${recentActivities.size} items")
-    }
-
-    private fun createSampleActivities(): List<ActivityItem> {
-        return listOf(
-            ActivityItem(
-                icon = android.R.drawable.ic_menu_edit,
-                title = getString(R.string.activity_service_booked),
-                description = getString(R.string.activity_service_booked_desc),
-                time = "2 hours ago",
-                type = ActivityType.BOOKING
-            ),
-            ActivityItem(
-                icon = android.R.drawable.ic_menu_save,
-                title = getString(R.string.activity_profile_updated),
-                description = getString(R.string.activity_profile_updated_desc),
-                time = "1 day ago",
-                type = ActivityType.PROFILE
-            ),
-            ActivityItem(
-                icon = android.R.drawable.ic_dialog_info,
-                title = getString(R.string.activity_welcome),
-                description = getString(R.string.activity_welcome_desc),
-                time = "2 days ago",
-                type = ActivityType.SYSTEM
-            )
-        )
     }
 
     override fun onResume() {

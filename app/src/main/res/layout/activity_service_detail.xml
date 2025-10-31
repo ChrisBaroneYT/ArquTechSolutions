@@ -12,25 +12,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Imagen del Servicio Mejorada -->
-        <androidx.cardview.widget.CardView
+        <!-- Título Nuestros Servicios -->
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="8dp">
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:drawableStart="@android:drawable/ic_menu_edit"
+            android:gravity="start"
+            android:text="Nuestros Servicios"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
 
-            <ImageView
-                android:id="@+id/service_detail_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/producto_foto_desc"
-                android:background="@color/light_gray" />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Información del Servicio -->
+        <!-- Servicio 1: Diseño -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,194 +36,370 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <!-- Nombre del Servicio -->
-                <TextView
-                    android:id="@+id/service_detail_name"
+                <!-- Imagen del Servicio Diseño -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Diseño Arquitectónico"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/purple_500"
-                    android:gravity="center"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
 
-                <!-- Precio Destacado -->
+                    <ImageView
+                        android:id="@+id/service_detail_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/diseno"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Servicio de Diseño Arquitectónico"
+                        android:background="@color/light_gray" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Información del Servicio Diseño -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginBottom="16dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
+                    <!-- Nombre del Servicio -->
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/service_detail_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Precio:"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:layout_marginEnd="8dp" />
-
-                    <TextView
-                        android:id="@+id/service_detail_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$500.00"
-                        android:textSize="22sp"
+                        android:text="Diseño Arquitectónico"
+                        android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="@color/teal_700"
-                        android:background="@drawable/price_background"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="4dp" />
+                        android:textColor="@color/purple_500"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Precio -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precio:"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/service_detail_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$500.00"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/teal_700"
+                            android:background="@drawable/price_background"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="4dp" />
+
+                    </LinearLayout>
+
+                    <!-- Descripción -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/service_detail_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Servicio completo de diseño arquitectónico profesional incluyendo planos detallados, renders 3D y asesoría personalizada. Perfecto para proyectos residenciales y comerciales."
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_dark"
+                        android:lineSpacingExtra="4dp"
+                        android:textAlignment="viewStart"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Características Incluidas -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Características Incluidas"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Característica 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Planos arquitectónicos detallados"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                    <!-- Característica 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_gallery"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Renders 3D de alta calidad"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                    <!-- Característica 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_my_calendar"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Asesoría personalizada"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
-
-                <!-- Descripción -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Descripción del Servicio"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/service_detail_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Servicio completo de diseño arquitectónico profesional incluyendo planos detallados, renders 3D y asesoría personalizada. Perfecto para proyectos residenciales y comerciales."
-                    android:textSize="16sp"
-                    android:textColor="@color/gray_dark"
-                    android:lineSpacingExtra="6dp"
-                    android:textAlignment="viewStart" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Características del Servicio -->
+        <!-- Servicio 2: Planos -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <TextView
+                <!-- Imagen del Servicio Planos -->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Características Incluidas"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
 
-                <!-- Característica 1 -->
+                    <ImageView
+                        android:id="@+id/service_planos_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/planos"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Servicio de Planos Arquitectónicos"
+                        android:background="@color/light_gray" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Información del Servicio Planos -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="8dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_edit"
-                        android:tint="@color/purple_500"
-                        android:layout_marginEnd="12dp" />
+                    <!-- Nombre del Servicio -->
+                    <TextView
+                        android:id="@+id/service_planos_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Planos Arquitectónicos"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/purple_500"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Precio -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precio:"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/service_planos_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$300.00"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/teal_700"
+                            android:background="@drawable/price_background"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="4dp" />
+
+                    </LinearLayout>
+
+                    <!-- Descripción -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="8dp" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/service_planos_description"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Planos arquitectónicos detallados"
+                        android:text="Elaboración profesional de planos arquitectónicos detallados incluyendo plantas, elevaciones, cortes y detalles constructivos para tu proyecto."
                         android:textSize="14sp"
-                        android:textColor="@color/gray_dark" />
+                        android:textColor="@color/gray_dark"
+                        android:lineSpacingExtra="4dp"
+                        android:textAlignment="viewStart"
+                        android:layout_marginBottom="16dp" />
 
-                </LinearLayout>
-
-                <!-- Característica 2 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_gallery"
-                        android:tint="@color/purple_500"
-                        android:layout_marginEnd="12dp" />
-
+                    <!-- Características Incluidas -->
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Renders 3D de alta calidad"
-                        android:textSize="14sp"
-                        android:textColor="@color/gray_dark" />
+                        android:text="Características Incluidas"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="12dp" />
 
-                </LinearLayout>
-
-                <!-- Característica 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_my_calendar"
-                        android:tint="@color/purple_500"
-                        android:layout_marginEnd="12dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
+                    <!-- Característica 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Asesoría personalizada"
-                        android:textSize="14sp"
-                        android:textColor="@color/gray_dark" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_edit"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
 
-                <!-- Característica 4 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Planos de plantas arquitectónicas"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@android:drawable/ic_menu_save"
-                        android:tint="@color/purple_500"
-                        android:layout_marginEnd="12dp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <!-- Característica 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Entrega en formato digital"
-                        android:textSize="14sp"
-                        android:textColor="@color/gray_dark" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_directions"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Elevaciones y cortes"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                    <!-- Característica 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_agenda"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Detalles constructivos"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -236,42 +407,212 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Botones de Acción -->
-        <LinearLayout
+        <!-- Servicio 3: Supervisión -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="8dp">
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
 
-            <!-- Botón Reservar -->
-            <Button
-                android:id="@+id/btnBookService"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Reservar Servicio"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="16dp"
-                android:backgroundTint="@color/purple_500"
-                android:textColor="@color/white"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_menu_add"
-                android:layout_marginBottom="12dp" />
+                android:orientation="vertical">
 
-            <!-- Botón Volver -->
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Volver a Servicios"
-                android:textSize="16sp"
-                android:padding="14dp"
-                android:backgroundTint="@color/gray_light"
-                android:textColor="@color/gray_dark"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_menu_revert" />
+                <!-- Imagen del Servicio Supervisión -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardElevation="0dp">
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/service_supervision_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/supervision"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Servicio de Supervisión de Obra"
+                        android:background="@color/light_gray" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Información del Servicio Supervisión -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Nombre del Servicio -->
+                    <TextView
+                        android:id="@+id/service_supervision_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Supervisión de Obra"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/purple_500"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Precio -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precio:"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/service_supervision_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$700.00"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/teal_700"
+                            android:background="@drawable/price_background"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="4dp" />
+
+                    </LinearLayout>
+
+                    <!-- Descripción -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/service_supervision_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Servicio profesional de supervisión y dirección de obra para garantizar que tu proyecto se construya según los planos y especificaciones técnicas."
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_dark"
+                        android:lineSpacingExtra="4dp"
+                        android:textAlignment="viewStart"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Características Incluidas -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Características Incluidas"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Característica 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_compass"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Supervisión en sitio"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                    <!-- Característica 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_report_image"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Reportes de avance"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                    <!-- Característica 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@android:drawable/ic_menu_manage"
+                            android:tint="@color/purple_500"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Control de calidad"
+                            android:textSize="14sp"
+                            android:textColor="@color/gray_dark" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnBackToHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver al Inicio"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@color/white"
+            android:drawablePadding="8dp"
+            android:drawableStart="@android:drawable/ic_menu_revert" />
+
 
     </LinearLayout>
 

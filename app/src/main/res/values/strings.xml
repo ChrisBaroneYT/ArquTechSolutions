@@ -2,6 +2,9 @@
     <!-- Nombre de la app -->
     <string name="app_name">ArquiTech</string>
 
+    <!-- ⭐⭐ STRING FALTANTE AGREGADO ⭐⭐ -->
+    <string name="back">Atrás</string>
+
     <string name="default_notification_channel_id">default_channel</string>
 
     <string name="login">Login</string>

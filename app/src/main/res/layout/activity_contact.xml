@@ -187,15 +187,20 @@
 
         <!-- Botón Volver -->
         <Button
-            android:id="@+id/btnBackContact"
+            android:id="@+id/btnBackToHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Volver al Inicio"
             android:textSize="16sp"
-            android:backgroundTint="@color/gray"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/purple_500"
             android:textColor="@color/white"
-            android:padding="12dp"
-            android:layout_marginTop="24dp" />
+            android:drawablePadding="8dp"
+            android:drawableStart="@android:drawable/ic_menu_revert" />
+
 
     </LinearLayout>
 

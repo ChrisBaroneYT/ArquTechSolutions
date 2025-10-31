@@ -3,6 +3,7 @@ package com.example.myapplicationarturocashfaster
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
 class ContactActivity : AppCompatActivity() {
@@ -10,10 +11,28 @@ class ContactActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact)
 
-        val btnBackContact: Button = findViewById(R.id.btnBackContact)
+        val btnBackToHome: Button = findViewById(R.id.btnBackToHome)
 
-        btnBackContact.setOnClickListener {
-            onBackPressed()
+        btnBackToHome.setOnClickListener {
+            goBackToHome()
         }
+
+        setupBackPressedHandler()
+    }
+
+    private fun setupBackPressedHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                goBackToHome()
+            }
+        })
+    }
+
+    private fun goBackToHome() {
+        // Navegar de vuelta a la actividad principal
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
     }
 }

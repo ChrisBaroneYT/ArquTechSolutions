@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sobrescribir colores para modo oscuro -->
+    <color name="primary_color">@color/dark_primary</color>
+    <color name="secondary_color">@color/dark_secondary</color>
+
+    <!-- Colores de fondo -->
+    <color name="white">@color/dark_background</color>
+    <color name="light_gray">@color/dark_surface</color>
+    <color name="gray_light">@color/dark_card</color>
+
+    <!-- Colores de texto -->
+    <color name="black">@color/dark_text_primary</color>
+    <color name="gray_dark">@color/dark_text_secondary</color>
+    <color name="gray_medium">@color/dark_text_hint</color>
+    <color name="gray">@color/dark_text_hint</color>
+
+    <!-- Colores para tarjetas -->
+    <color name="purple_50">@color/dark_card</color>
+</resources>
