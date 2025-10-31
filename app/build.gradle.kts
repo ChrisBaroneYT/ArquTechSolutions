@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.viewpager2:viewpager2:1.0.0") // ← AGREGAR ESTA LÍNEA
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
@@ -74,6 +74,9 @@ dependencies {
     // Image Loading - Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    // ✅ AGREGAR: Integración con OkHttp
+    implementation("com.github.bumptech.glide:okhttp3-integration:4.16.0")
 
     // JSON
     implementation("com.google.code.gson:gson:2.10.1")

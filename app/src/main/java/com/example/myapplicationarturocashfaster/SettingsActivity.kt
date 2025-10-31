@@ -22,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnBack: android.widget.ImageButton
 
     private lateinit var sharedPreferences: SharedPreferences
+    private var isThemeChanging = false // Bandera para evitar bucles
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +58,18 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Modo Oscuro - MEJORADO con recreación de actividad
+        // Modo Oscuro - CORREGIDO: Evitar bucle
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            // Si ya estamos cambiando el tema, ignorar
+            if (isThemeChanging) return@setOnCheckedChangeListener
+
             Log.d("SETTINGS_DEBUG", "🔄 Modo oscuro cambiado a: $isChecked")
+
+            // Guardar preferencia primero
+            saveSetting("dark_mode", isChecked)
+
+            // Activar bandera para evitar bucles
+            isThemeChanging = true
 
             val nightMode = if (isChecked) {
                 AppCompatDelegate.MODE_NIGHT_YES
@@ -70,19 +80,16 @@ class SettingsActivity : AppCompatActivity() {
             // Aplicar el modo inmediatamente
             AppCompatDelegate.setDefaultNightMode(nightMode)
 
-            // Guardar preferencia
-            saveSetting("dark_mode", isChecked)
-
             // Mensaje informativo
             val message = if (isChecked) {
-                "Modo oscuro activado - Reiniciando aplicación..."
+                "Modo oscuro activado"
             } else {
-                "Modo claro activado - Reiniciando aplicación..."
+                "Modo claro activado"
             }
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
-            // Reiniciar la actividad para aplicar cambios inmediatamente
-            recreateWithDelay()
+            // NO recrear la actividad inmediatamente - dejar que AppCompatDelegate maneje el cambio
+            // El sistema recreará automáticamente la actividad si es necesario
         }
 
         // Notificaciones
@@ -135,19 +142,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun loadCurrentSettings() {
-        // Modo Oscuro - MEJORADO con detección más precisa
-        val currentNightMode = AppCompatDelegate.getDefaultNightMode()
-        val isDarkMode = when (currentNightMode) {
-            AppCompatDelegate.MODE_NIGHT_YES -> true
-            AppCompatDelegate.MODE_NIGHT_NO -> false
-            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> {
-                // Verificar si el sistema está en modo oscuro
-                val currentSystemMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
-                currentSystemMode == android.content.res.Configuration.UI_MODE_NIGHT_YES
-            }
-            else -> false
-        }
-
+        // Cargar modo oscuro desde preferencias directamente
+        val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
         darkModeSwitch.isChecked = isDarkMode
         Log.d("SETTINGS_DEBUG", "📱 Modo oscuro cargado: $isDarkMode")
 
@@ -171,7 +167,6 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupBackPressedHandler() {
-        // ✅ CORREGIDO: Usar la nueva API sin warnings
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 finish()
@@ -192,29 +187,41 @@ class SettingsActivity : AppCompatActivity() {
         Log.d("SETTINGS_DEBUG", "💾 Configuración guardada: $key = $value")
     }
 
-    // NUEVO: Aplicar tema desde preferencias
+    // CORREGIDO: Aplicar tema sin forzar recreación
     private fun applyThemeFromPreferences() {
         val prefs = getSharedPreferences("app_settings", MODE_PRIVATE)
         val isDarkMode = prefs.getBoolean("dark_mode", false)
 
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            Log.d("SETTINGS_DEBUG", "🌙 Tema oscuro aplicado desde preferencias")
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            Log.d("SETTINGS_DEBUG", "☀️ Tema claro aplicado desde preferencias")
+        // Solo aplicar si es diferente al actual
+        val currentNightMode = AppCompatDelegate.getDefaultNightMode()
+        val shouldBeDark = isDarkMode
+        val isCurrentlyDark = currentNightMode == AppCompatDelegate.MODE_NIGHT_YES
+
+        if (shouldBeDark != isCurrentlyDark) {
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                Log.d("SETTINGS_DEBUG", "🌙 Tema oscuro aplicado desde preferencias")
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Log.d("SETTINGS_DEBUG", "☀️ Tema claro aplicado desde preferencias")
+            }
         }
     }
 
-    // NUEVO: Reiniciar actividad con delay para mejor UX
-    private fun recreateWithDelay() {
-        // Pequeño delay para que el usuario vea el Toast
-        btnBack.postDelayed({
-            recreate()
-        }, 500)
+    override fun onResume() {
+        super.onResume()
+        // Resetear la bandera cuando la actividad se reanuda
+        isThemeChanging = false
+        logCurrentTheme()
     }
 
-    // NUEVO: Para debugging del tema actual
+    override fun onPause() {
+        super.onPause()
+        // Resetear la bandera cuando la actividad se pausa
+        isThemeChanging = false
+    }
+
+    // Para debugging del tema actual
     private fun logCurrentTheme() {
         val currentNightMode = AppCompatDelegate.getDefaultNightMode()
         val themeInfo = when (currentNightMode) {
@@ -227,11 +234,5 @@ class SettingsActivity : AppCompatActivity() {
         Log.d("SETTINGS_DEBUG", "🎨 Tema actual: $themeInfo")
     }
 
-    override fun onResume() {
-        super.onResume()
-        logCurrentTheme() // Debug del tema al volver
-    }
-
-    // ✅ ELIMINADO: onBackPressed() deprecated - Ya no es necesario
-    // El callback del dispatcher maneja todo
+    // ELIMINADO: recreateWithDelay() - Ya no es necesario
 }
