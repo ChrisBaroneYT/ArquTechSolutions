@@ -459,7 +459,7 @@
 
         </LinearLayout>
 
-        <!-- ✅ CORREGIDO: Navegación Inferior FUERA de las tarjetas -->
+        <!-- ✅ CORREGIDO: Navegación Inferior FUERA de las tarjetas - ACTUALIZADO CON TIENDA -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -494,7 +494,24 @@
                 android:drawableTop="@android:drawable/ic_menu_agenda"
                 android:drawablePadding="4dp" />
 
-            <Button
+            <!-- NUEVO: Botón de Tienda -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNavStore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tienda"
+                android:textSize="12sp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:textColor="@color/purple_500"
+                app:icon="@drawable/ic_store"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconTint="@color/purple_500" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnNavProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -503,8 +520,10 @@
                 android:textSize="12sp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:textColor="@color/purple_500"
-                android:drawableTop="@android:drawable/ic_menu_myplaces"
-                android:drawablePadding="4dp" />
+                app:icon="@android:drawable/ic_menu_myplaces"
+                app:iconGravity="textTop"
+                app:iconPadding="4dp"
+                app:iconTint="@color/purple_500" />
 
         </LinearLayout>
 

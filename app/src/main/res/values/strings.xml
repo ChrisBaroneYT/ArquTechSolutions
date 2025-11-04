@@ -176,4 +176,50 @@
     <string name="time_hours_ago">hace %d horas</string>
     <string name="time_days_ago">hace %d días</string>
     <string name="time_just_now">ahora mismo</string>
+
+    <!-- Añade estos strings al final de tu strings.xml -->
+    <string name="store">🏪 Tienda</string>
+    <string name="cart">🛒 Carrito</string>
+    <string name="products">🛠️ Productos</string>
+    <string name="materials">🏗️ Materiales</string>
+    <string name="tools">🛠️ Herramientas</string>
+    <string name="rental">📦 Alquiler</string>
+    <string name="add_to_cart">Añadir al Carrito</string>
+    <string name="out_of_stock">Agotado</string>
+    <string name="low_stock">Últimas unidades</string>
+    <string name="in_stock">En stock</string>
+    <string name="subtotal">Subtotal: %s</string>
+    <string name="iva">IVA (16%%): %s</string>
+    <string name="total">Total: %s</string>
+    <string name="checkout">💳 Pagar</string>
+    <string name="continue_shopping">🛍️ Seguir Comprando</string>
+
+    <!-- Checkout Strings -->
+    <string name="checkout_title">Proceso de Pago</string>
+    <string name="order_summary">Resumen del Pedido</string>
+    <string name="payment_info">Información de Pago</string>
+    <string name="shipping_info">Información de Envío</string>
+    <string name="card_number">Número de Tarjeta</string>
+    <string name="expiry_date">MM/AA</string>
+    <string name="cvv">CVV</string>
+    <string name="card_holder">Nombre del Titular</string>
+    <string name="address">Dirección Completa</string>
+    <string name="city">Ciudad</string>
+    <string name="zip_code">Código Postal</string>
+    <string name="process_payment">Procesar Pago</string>
+    <string name="processing_payment">Procesando pago…</string>
+
+    <!-- Payment Success Strings -->
+    <string name="payment_success">¡Pago Exitoso!</string>
+    <string name="payment_success_message">Tu pedido ha sido procesado exitosamente. Recibirás una confirmación por email.</string>
+    <string name="order_details">Detalles del Pedido</string>
+    <string name="order_number">Número de Orden:</string>
+    <string name="total_paid">Total Pagado:</string>
+    <string name="view_orders">Ver Mis Pedidos</string>
+
+    <!-- Validation Messages -->
+    <string name="error_invalid_card">Número de tarjeta inválido</string>
+    <string name="error_invalid_expiry">Fecha de expiración inválida</string>
+    <string name="error_invalid_cvv">CVV inválido</string>
+    <string name="error_required_field">Este campo es requerido</string>
 </resources>

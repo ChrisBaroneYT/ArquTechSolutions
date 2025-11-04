@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <!-- Icono de Éxito -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@android:drawable/stat_notify_sync_noanim"
+        android:tint="@color/green"
+        android:contentDescription="Pago exitoso"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Mensaje de Éxito -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎉 ¡Pago Exitoso!"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tu pedido ha sido procesado exitosamente. Recibirás una confirmación por email."
+        android:textSize="16sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Información del Pedido -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📋 Detalles del Pedido"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Número de Orden:"
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <TextView
+                    android:id="@+id/tvOrderNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ORD-20231201001"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Total Pagado:"
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$0.00"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botones de Acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnBackToStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🛍️ Seguir Comprando"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingVertical="14dp"
+            android:layout_marginBottom="12dp"
+            app:backgroundTint="?attr/colorPrimary" />
+
+        <Button
+            android:id="@+id/btnViewOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Ver Mis Pedidos"
+            android:textSize="14sp"
+            android:paddingVertical="12dp"
+            style="@style/Widget.Material3.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+</LinearLayout>

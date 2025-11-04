@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💳 Proceso de Pago"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Resumen del Pedido -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📦 Resumen del Pedido"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/tvOrderSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cargando..."
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:lineSpacingExtra="4dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/colorOutline"
+                    android:layout_marginVertical="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Total a Pagar:"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <TextView
+                        android:id="@+id/tvTotalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$0.00"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Información de Pago -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/layoutPaymentForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💳 Información de Pago"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Número de Tarjeta -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCardNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Número de Tarjeta"
+                        android:inputType="number"
+                        android:maxLength="19"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Fecha de Expiración y CVV -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxStrokeColor="?attr/colorPrimary"
+                        app:hintTextColor="?attr/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etExpiryDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="MM/AA"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxStrokeColor="?attr/colorPrimary"
+                        app:hintTextColor="?attr/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCVV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="CVV"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <!-- Nombre del Titular -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCardHolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre del Titular"
+                        android:inputType="textCapWords"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Información de Envío -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🏠 Información de Envío"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Dirección -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="?attr/colorPrimary"
+                    app:hintTextColor="?attr/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dirección Completa"
+                        android:inputType="textPostalAddress"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Ciudad y Código Postal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_marginEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxStrokeColor="?attr/colorPrimary"
+                        app:hintTextColor="?attr/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Ciudad"
+                            android:inputType="textCapWords"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxStrokeColor="?attr/colorPrimary"
+                        app:hintTextColor="?attr/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etZipCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Código Postal"
+                            android:inputType="number"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textColorHint="?attr/colorOnSurfaceVariant" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Botón de Pago -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btnProcessPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✅ Procesar Pago"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingVertical="14dp"
+                app:backgroundTint="?attr/colorPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

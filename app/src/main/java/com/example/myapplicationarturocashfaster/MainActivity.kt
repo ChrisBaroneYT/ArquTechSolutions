@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnNavServices: Button
     private lateinit var btnNavBookings: Button
     private lateinit var btnNavProfile: Button
+    private lateinit var btnNavStore: Button // NUEVO: Botón para tienda
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var layoutNotLoggedIn: LinearLayout
     private lateinit var layoutLoggedIn: LinearLayout
@@ -176,6 +177,7 @@ class MainActivity : AppCompatActivity() {
         btnNavServices = findViewById(R.id.btnNavServices)
         btnNavBookings = findViewById(R.id.btnNavBookings)
         btnNavProfile = findViewById(R.id.btnNavProfile)
+        btnNavStore = findViewById(R.id.btnNavStore) // NUEVO: Inicializar botón tienda
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
         // Inicializar vistas de usuario
@@ -194,6 +196,11 @@ class MainActivity : AppCompatActivity() {
 
         btnNavProfile.setOnClickListener {
             navigateToProfile()
+        }
+
+        // NUEVO: Navegación a la tienda
+        btnNavStore.setOnClickListener {
+            navigateToStore()
         }
     }
 
@@ -225,6 +232,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    // NUEVA FUNCIÓN: Navegación a la tienda
+    private fun navigateToStore() {
+        val intent = Intent(this, StoreActivity::class.java)
+        startActivity(intent)
     }
 
     // NUEVA FUNCIÓN PARA ACTUALIZAR INTERFAZ DE USUARIO

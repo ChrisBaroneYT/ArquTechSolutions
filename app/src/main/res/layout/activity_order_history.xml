@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📋 Mis Pedidos"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <!-- Sin Pedidos -->
+    <TextView
+        android:id="@+id/tvEmptyOrders"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="📭 No tienes pedidos aún\n\nRealiza tu primera compra para ver tu historial aquí"
+        android:textSize="18sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <!-- Lista de Pedidos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrders"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <!-- Botón Volver -->
+    <Button
+        android:id="@+id/btnBackToStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🛍️ Volver a la Tienda"
+        android:layout_margin="16dp"
+        style="@style/Widget.Material3.Button.OutlinedButton" />
+
+</LinearLayout>

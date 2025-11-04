@@ -50,6 +50,63 @@
             </intent-filter>
         </activity>
 
+        <!-- ========== ACTIVIDADES DE LA TIENDA ========== -->
+
+        <!-- STORE ACTIVITY (Tienda Principal) -->
+        <activity
+            android:name=".StoreActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- CART ACTIVITY (Carrito de Compras) -->
+        <activity
+            android:name=".CartActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- CHECKOUT ACTIVITY (Proceso de Pago) -->
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+
+        <!-- PAYMENT SUCCESS ACTIVITY (Confirmación de Pago) -->
+        <activity
+            android:name=".PaymentSuccessActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster" />
+
+        <!-- SEARCH ACTIVITY (Búsqueda de Productos) -->
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+
+        <!-- ORDER HISTORY ACTIVITY (Historial de Pedidos) -->
+        <activity
+            android:name=".OrderHistoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster" />
+
+        <!-- ORDER DETAIL ACTIVITY (Detalle de Pedido) -->
+        <activity
+            android:name=".OrderDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationArturoCashFaster" />
+
+        <!-- ========== ACTIVIDADES EXISTENTES ========== -->
+
         <!-- USER PROFILE ACTIVITY (antes DashboardActivity) -->
         <activity
             android:name=".UserProfileActivity"
@@ -106,4 +163,5 @@
             android:resource="@xml/network_security_config" />
 
     </application>
+
 </manifest>

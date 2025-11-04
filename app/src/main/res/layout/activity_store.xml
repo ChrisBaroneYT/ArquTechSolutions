@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏗️ ConstruMax Pro"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+
+            <ImageButton
+                android:id="@+id/btnViewCart"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_set_as"
+                android:contentDescription="@string/cart"
+                android:tint="?attr/colorOnPrimary" />
+
+            <TextView
+                android:id="@+id/tvCartCount"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle_red"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:layout_alignTop="@id/btnViewCart"
+                android:layout_alignEnd="@id/btnViewCart" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- Filtros Rápidos -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="?attr/colorSurfaceVariant">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📂 Todas"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btnTools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🛠️ Herramientas"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btnMaterials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏗️ Materiales"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btnRental"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📦 Alquiler"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- Lista de Productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+</LinearLayout>

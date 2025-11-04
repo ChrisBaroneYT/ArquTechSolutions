@@ -39,4 +39,10 @@
     <color name="dark_secondary">#FF03DAC5</color>
     <color name="dark_divider">#FF333333</color>
     <color name="dark_icon">#FFFFFFFF</color>
+
+    <!-- Añade estos colores a tu colors.xml -->
+    <color name="construction_primary">#FF6B3C</color>
+    <color name="construction_primary_dark">#CC552F</color>
+    <color name="construction_secondary">#4682B4</color>
+    <color name="blue_700">#FF1976D2</color>
 </resources>
