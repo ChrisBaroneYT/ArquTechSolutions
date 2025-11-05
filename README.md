@@ -174,15 +174,10 @@ Las contribuciones son bienvenidas. Para contribuir:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
 ## 👥 Autor
 - **Christian Barone** - [ChrisBaroneYT](https://github.com/ChrisBaroneYT)
 
 ## 📞 Contacto
 - 📧 Email: co.cristiand@gmail.com
 
----
 **ArquTechSolutions** - Donde la arquitectura se encuentra con la innovación tecnológica móvil.
-```
