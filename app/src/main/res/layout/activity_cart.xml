@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🛒 Mi Carrito"
+            android:text="@string/my_cart"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="🛒 Tu carrito está vacío\n\nAgrega productos desde la tienda"
+        android:text="@string/empty_cart"
         android:textSize="18sp"
         android:textColor="?attr/colorOnSurfaceVariant"
         android:gravity="center"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📊 Resumen del Pedido"
+                android:text="@string/order_summary"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
@@ -78,7 +78,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Subtotal:"
+                    android:text="@string/subtotal"
                     android:textSize="16sp"
                     android:textColor="?attr/colorOnSurface" />
 
@@ -86,7 +86,7 @@
                     android:id="@+id/tvSubtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0.00"
+                    android:text="@string/default_price"
                     android:textSize="16sp"
                     android:textColor="?attr/colorOnSurface" />
 
@@ -103,7 +103,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="IVA (16%):"
+                    android:text="@string/tax_iva"
                     android:textSize="16sp"
                     android:textColor="?attr/colorOnSurface" />
 
@@ -111,7 +111,7 @@
                     android:id="@+id/tvIVA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0.00"
+                    android:text="@string/default_price"
                     android:textSize="16sp"
                     android:textColor="?attr/colorOnSurface" />
 
@@ -133,7 +133,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total:"
+                    android:text="@string/total"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorOnSurface" />
@@ -142,7 +142,7 @@
                     android:id="@+id/tvTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0.00"
+                    android:text="@string/default_price"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorPrimary" />
@@ -165,7 +165,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🛍️ Seguir Comprando"
+            android:text="@string/continue_shopping"
             android:layout_marginEnd="8dp"
             style="@style/Widget.Material3.Button.OutlinedButton" />
 
@@ -174,7 +174,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="💳 Pagar"
+            android:text="@string/pay"
             android:layout_marginStart="8dp" />
 
     </LinearLayout>

@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contáctenos"
+                android:text="@string/contact_us"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/purple_500"
@@ -58,7 +58,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estamos aquí para ayudarte"
+                    android:text="@string/we_are_here"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -83,7 +83,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+1 234 567 8900"
+                        android:text="@string/phone_number"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -107,7 +107,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info@arquitech.com"
+                        android:text="@string/email"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -131,7 +131,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Av. Principal 123, Ciudad"
+                        android:text="@string/company_address"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -159,7 +159,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Horario de Atención"
+                    android:text="@string/business_hours"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -169,7 +169,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lunes a Viernes: 8:00 AM - 6:00 PM"
+                    android:text="@string/week_hours"
                     android:textSize="16sp"
                     android:gravity="center"
                     android:layout_marginBottom="8dp" />
@@ -177,7 +177,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sábados: 9:00 AM - 1:00 PM"
+                    android:text="@string/saturday_hours"
                     android:textSize="16sp"
                     android:gravity="center" />
 
@@ -190,7 +190,7 @@
             android:id="@+id/btnBackToHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver al Inicio"
+            android:text="@string/back_to_home"
             android:textSize="16sp"
             android:textStyle="bold"
             android:padding="14dp"
@@ -200,7 +200,6 @@
             android:textColor="@color/white"
             android:drawablePadding="8dp"
             android:drawableStart="@android:drawable/ic_menu_revert" />
-
 
     </LinearLayout>
 

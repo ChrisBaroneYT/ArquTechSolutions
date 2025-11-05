@@ -1,225 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Nombre de la app -->
-    <string name="app_name">🏛️ ArquiTech</string>
+    <!-- STRING CRÍTICO PARA ANDROID MANIFEST -->
+    <string name="app_name">ArquíTech Solutions</string>
 
-    <!-- ⭐⭐ STRING FALTANTE AGREGADO ⭐⭐ -->
-    <string name="back">⬅️ Atrás</string>
+    <!-- STRINGS PARA LOGIN ACTIVITY -->
+    <string name="error_empty_fields">Por favor, complete todos los campos</string>
+    <string name="error_invalid_email">Por favor, ingrese un email válido</string>
+    <string name="logging_in">Iniciando sesión...</string>
+    <string name="login_success">Inicio de sesión exitoso</string>
+    <string name="login_error">Error al iniciar sesión</string>
 
-    <string name="default_notification_channel_id">default_channel</string>
+    <!-- STRINGS PARA REGISTER ACTIVITY -->
+    <string name="error_passwords_not_match">Las contraseñas no coinciden</string>
+    <string name="error_password_length">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="registering">Registrando usuario...</string>
+    <string name="register_success">Registro exitoso</string>
+    <string name="register_error">Error al registrar usuario</string>
 
-    <string name="login">🔐 Iniciar Sesión</string>
-    <string name="registrarse">📝 Registrarse</string>
+    <!-- STRINGS PARA USER PROFILE ACTIVITY -->
+    <string name="please_login">Por favor, inicie sesión</string>
+    <string name="logout_confirmation_title">Cerrar Sesión</string>
+    <string name="logout_confirmation_message">¿Está seguro de que desea cerrar sesión?</string>
+    <string name="yes">Sí</string>
+    <string name="cancel">Cancelar</string>
+    <string name="logout_success">Sesión cerrada exitosamente</string>
 
-    <string name="company_name">ArquiTech</string>
-    <string name="company_slogan">🏛️ Soluciones Arquitectónicas Integrales</string>
-    <string name="logo_arquitech_desc">Logo de ArquiTech</string>
-    <string name="our_services">🛠️ Nuestros Servicios</string>
-    <string name="our_team">👥 Nuestro Equipo</string>
-    <string name="login_register">🔐 Iniciar Sesión</string>
-    <string name="my_account">👤 Mi Cuenta</string>
-    <string name="hero_title">💡 Transformamos tus Ideas en Realidad</string>
-    <string name="hero_subtitle">🏗️ Diseño arquitectónico profesional y soluciones integrales</string>
+    <!-- STRINGS GENÉRICOS -->
+    <string name="generic_error">Error en la operación</string>
+    <string name="unknown_error">Error desconocido</string>
 
-    <!-- SERVICIOS -->
-    <string name="service_design">🏠 Diseño Arquitectónico</string>
-    <string name="service_plans">📐 Planos Estructurales</string>
-    <string name="service_supervision">👷‍♂️ Supervisión de Obra</string>
-    <string name="service_consultancy">💼 Consultoría</string>
-
-    <!-- Descripciones para imágenes de servicios -->
-    <string name="desc_servicio_diseno">🏠 Servicio de Diseño Arquitectónico</string>
-    <string name="desc_servicio_planos">📐 Servicio de Planos Técnicos</string>
-    <string name="desc_servicio_supervision">👷‍♂️ Servicio de Supervisión de Obra</string>
-
-    <string name="service_design_desc">📝 Planos y diseño personalizado para tu proyecto</string>
-    <string name="service_plans_desc">📊 Planos técnicos detallados y estructurales</string>
-    <string name="service_supervision_desc">✅ Control y calidad en construcción</string>
-    <string name="service_consultancy_desc">💡 Asesoría especializada por hora</string>
-
-    <!-- EQUIPO -->
-    <string name="team_architect">👨‍💼 Arquitecto Principal</string>
-    <string name="team_engineer">👩‍🔧 Ingeniero Estructural</string>
-    <string name="team_designer">🎨 Diseñador</string>
-    <string name="team_assistant">👨‍💼 Asistente</string>
-
-    <!-- Descripciones para imágenes del equipo -->
-    <string name="desc_arquitecto_juan">📸 Foto del Arquitecto Juan</string>
-    <string name="desc_ingeniero_maria">📸 Foto de la Ingeniera María</string>
-    <string name="desc_ayudante_carlos">📸 Foto del Ayudante Carlos</string>
-
-    <!-- DESCARGAS PARA ACCESIBILIDAD - NUEVAS -->
-    <string name="desc_activity_icon">📱 Icono de la actividad</string>
-    <string name="desc_arrow_icon">➡️ Flecha hacia la derecha</string>
-    <string name="desc_profile_image">👤 Foto de perfil del usuario</string>
-    <string name="desc_settings_icon">⚙️ Icono de configuración</string>
-    <string name="desc_notification_icon">🔔 Icono de notificaciones</string>
-    <string name="desc_menu_icon">📋 Icono de menú</string>
-    <string name="desc_search_icon">🔍 Icono de búsqueda</string>
-    <string name="desc_back_icon">⬅️ Icono de retroceso</string>
-    <string name="desc_close_icon">❌ Icono de cerrar</string>
-    <string name="desc_delete_icon">🗑️ Icono de eliminar</string>
-    <string name="desc_edit_icon">✏️ Icono de editar</string>
-
-    <string name="login_title">🔐 Iniciar Sesión</string>
-    <string name="email_hint">📧 Email</string>
-    <string name="password_hint">🔒 Contraseña</string>
-    <string name="login_button">🚀 Iniciar Sesión</string>
-    <string name="logging_in">⏳ Iniciando sesión…</string>
-    <string name="no_account">❓ ¿No tienes cuenta?</string>
-    <string name="register_link">📝 Regístrate</string>
-
-    <!-- Mensajes de validación y error -->
-    <string name="error_empty_fields">⚠️ Por favor, completa todos los campos</string>
-    <string name="error_invalid_email">⚠️ Por favor, ingresa un email válido</string>
-    <string name="login_success">✅ Inicio de sesión exitoso</string>
-    <string name="login_error">❌ Error en el inicio de sesión: %s</string>
-    <string name="generic_error">❌ Error: %s</string>
-    <string name="unknown_error">❓ Error desconocido</string>
-
-    <string name="register_title">📝 Registro</string>
-    <string name="identification_hint">🆔 Identificación</string>
-    <string name="username_hint">👤 Nombre de Usuario</string>
-    <string name="confirm_password_hint">🔒 Confirmar Contraseña</string>
-    <string name="register_button">🚀 Registrarse</string>
-    <string name="registering">⏳ Registrando…</string>
-    <string name="already_have_account">❓ ¿Ya tienes cuenta?</string>
-    <string name="login_link">🔐 Inicia Sesión</string>
-
-    <!-- Mensajes de validación y error para registro -->
-    <string name="error_passwords_not_match">⚠️ Las contraseñas no coinciden</string>
-    <string name="error_password_length">⚠️ La contraseña debe tener al menos 6 caracteres</string>
-    <string name="register_success">✅ Registro exitoso</string>
-    <string name="register_error">❌ Error en el registro: %s</string>
-
-    <!-- Agregar estos strings -->
-    <string name="service_image_desc">🖼️ Imagen del servicio</string>
-    <string name="team_member_desc">📸 Foto del miembro del equipo</string>
-
-    <string name="service_name_sample">🏠 Diseño Arquitectónico Residencial</string>
-    <string name="service_description_sample">🏗️ Servicio completo de diseño y planos para viviendas residenciales. Incluye consultoría, planos arquitectónicos y seguimiento del proyecto.</string>
-    <string name="service_price_sample">💵 $500.00</string>
-    <string name="btn_book_service_format">📅 Reservar Diseño Residencial - %s</string>
-    <string name="processing">⏳ Procesando…</string>
-    <string name="booking_success">✅ ¡Servicio reservado exitosamente!</string>
-    <string name="booking_error">❌ Error al reservar: %s</string>
-
-    <!-- TEXTO PARA item_activity.xml - NUEVOS -->
-    <string name="activity_title_default">📱 Activity Title</string>
-    <string name="activity_description_default">📝 Activity Description</string>
-    <string name="activity_time_default">🕐 2 hours ago</string>
-
-    <!-- Descripciones e imágenes -->
-    <string name="logo_tienda_desc">🏪 Logo de la Tienda X</string>
-    <string name="banner_tienda_desc">🎯 Banner de promoción de Tienda X</string>
-    <string name="producto_foto_desc">🖼️ Imagen del producto</string>
-    <string name="icono_producto_desc">📦 Icono del producto</string>
-
-    <!-- Textos de navegación de fragments -->
-    <string name="next">➡️ Siguiente</string>
-    <string name="previous">⬅️ Anterior</string>
-    <string name="lorem_ipsum">📝 Esta es una descripción de ejemplo (Lorem ipsum).</string>
-
-    <!-- Etiquetas de fragments -->
-    <string name="first_fragment_label">1️⃣ Primer Fragmento</string>
-    <string name="second_fragment_label">2️⃣ Segundo Fragmento</string>
-
-    <!-- Menú principal -->
-    <string name="action_settings">⚙️ Configuración</string>
-
-    <!-- Logout -->
-    <string name="logout">🚪 Cerrar Sesión</string>
-    <string name="logout_confirmation_title">🚪 Cerrar Sesión</string>
-    <string name="logout_confirmation_message">❓ ¿Estás seguro de que quieres cerrar sesión?</string>
-    <string name="logout_success">✅ Sesión cerrada exitosamente</string>
-    <string name="yes">✅ Sí</string>
-    <string name="cancel">❌ Cancelar</string>
-    <string name="please_login">🔐 Por favor inicia sesión para acceder al dashboard</string>
-
-    <!-- ========== NUEVOS STRINGS PARA DASHBOARD ========== -->
-    <!-- Dashboard Texts -->
-    <string name="welcome_back">👋 ¡Bienvenido de nuevo, %s!</string>
-    <string name="quick_actions">⚡ Acciones Rápidas</string>
-    <string name="recent_activity">📊 Actividad Reciente</string>
-    <string name="book_service">📅 Reservar Servicio</string>
-    <string name="my_bookings">📋 Mis Reservas</string>
-    <string name="bookings">📋 Reservas</string>
-    <string name="services">🛠️ Servicios</string>
-
-    <!-- Nuevos strings para landing page -->
-    <string name="logo_arquitech">🏛️ Logo Arquitech</string>
-    <string name="arquitech">🏛️ ARQUITECH</string>
-    <string name="soluciones_arquitectonicas">🏗️ Soluciones Arquitectónicas</string>
-    <string name="nuestros_servicios">🛠️ NUESTROS SERVICIOS</string>
-    <string name="diseno">🏠 Diseño</string>
-    <string name="planos">📐 Planos</string>
-    <string name="supervision">👷‍♂️ Supervisión</string>
-    <string name="precio_500">💵 $500</string>
-    <string name="precio_300">💵 $300</string>
-    <string name="precio_700">💵 $700</string>
-    <string name="nuestro_equipo">👥 NUESTRO EQUIPO</string>
-    <string name="arq">👨‍💼 Arq.</string>
-    <string name="ing">👩‍🔧 Ing.</string>
-    <string name="ayud">👨‍💼 Ayud.</string>
+    <!-- EXISTING STRINGS (keep these) -->
+    <string name="login">Iniciar Sesión</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="arquitech">ArquíTech</string>
+    <string name="soluciones_arquitectonicas">Soluciones Arquitectónicas</string>
+    <string name="logo_arquitech">Logo ArquíTech</string>
+    <string name="desc_servicio_diseno">Servicio de Diseño Arquitectónico</string>
+    <string name="desc_servicio_planos">Servicio de Planos Arquitectónicos</string>
+    <string name="desc_servicio_supervision">Servicio de Supervisión de Obra</string>
+    <string name="diseno">Diseño</string>
+    <string name="planos">Planos</string>
+    <string name="supervision">Supervisión</string>
+    <string name="precio_500">$500.00</string>
+    <string name="precio_300">$300.00</string>
+    <string name="precio_700">$700.00</string>
+    <string name="arq">Arq.</string>
+    <string name="ing">Ing.</string>
+    <string name="ayud">Ayud.</string>
     <string name="juan">Juan</string>
     <string name="maria">María</string>
     <string name="carlos">Carlos</string>
 
-    <!-- Activity Items -->
-    <string name="activity_service_booked">📅 Consulta de Servicio Reservada</string>
-    <string name="activity_profile_updated">👤 Perfil Actualizado</string>
-    <string name="activity_welcome">🎉 ¡Bienvenido a ArquiTech!</string>
-    <string name="activity_service_booked_desc">🏠 Servicio de Diseño Arquitectónico</string>
-    <string name="activity_profile_updated_desc">✅ Tu información de perfil fue actualizada</string>
-    <string name="activity_welcome_desc">🎊 Tu cuenta fue creada exitosamente</string>
+    <!-- LOGIN/REGISTER STRINGS -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="email_hint">Correo Electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="no_account">¿No tienes cuenta?</string>
+    <string name="register_link">Regístrate</string>
+    <string name="register_title">Crear Cuenta</string>
+    <string name="identification_hint">Número de Identificación</string>
+    <string name="username_hint">Nombre de Usuario</string>
+    <string name="confirm_password_hint">Confirmar Contraseña</string>
+    <string name="register_button">Registrarse</string>
+    <string name="already_have_account">¿Ya tienes cuenta?</string>
+    <string name="login_link">Inicia Sesión</string>
 
-    <!-- Time formats -->
-    <string name="time_hours_ago">🕐 hace %d horas</string>
-    <string name="time_days_ago">📅 hace %d días</string>
-    <string name="time_just_now">⚡ ahora mismo</string>
+    <!-- NEW STRINGS FROM ANALYSIS -->
 
-    <!-- Añade estos strings al final de tu strings.xml -->
-    <string name="store">🏪 Tienda</string>
-    <string name="cart">🛒 Carrito</string>
-    <string name="products">🛠️ Productos</string>
-    <string name="materials">🏗️ Materiales</string>
-    <string name="tools">🛠️ Herramientas</string>
-    <string name="rental">📦 Alquiler</string>
-    <string name="add_to_cart">➕ Añadir al Carrito</string>
-    <string name="out_of_stock">❌ Agotado</string>
-    <string name="low_stock">⚠️ Últimas unidades</string>
-    <string name="in_stock">✅ En stock</string>
-    <string name="subtotal">💰 Subtotal: %s</string>
-    <string name="iva">🏛️ IVA (16%%): %s</string>
-    <string name="total">💳 Total: %s</string>
-    <string name="checkout">💳 Pagar</string>
+    <!-- Cart -->
+    <string name="my_cart">🛒 Mi Carrito</string>
+    <string name="empty_cart">🛒 Tu carrito está vacío\n\nAgrega productos desde la tienda</string>
+    <string name="order_summary">📊 Resumen del Pedido</string>
+    <string name="subtotal">Subtotal:</string>
+    <string name="tax_iva">IVA (16%):</string>
+    <string name="total">Total:</string>
     <string name="continue_shopping">🛍️ Seguir Comprando</string>
+    <string name="pay">💳 Pagar</string>
 
-    <!-- Checkout Strings -->
-    <string name="checkout_title">💳 Proceso de Pago</string>
-    <string name="order_summary">📋 Resumen del Pedido</string>
+    <!-- Checkout -->
+    <string name="payment_process">💳 Proceso de Pago</string>
+    <string name="order_summary_title">📦 Resumen del Pedido</string>
+    <string name="total_to_pay">Total a Pagar:</string>
     <string name="payment_info">💳 Información de Pago</string>
-    <string name="shipping_info">🚚 Información de Envío</string>
-    <string name="card_number">💳 Número de Tarjeta</string>
-    <string name="expiry_date">📅 MM/AA</string>
-    <string name="cvv">🔒 CVV</string>
-    <string name="card_holder">👤 Nombre del Titular</string>
-    <string name="address">🏠 Dirección Completa</string>
-    <string name="city">🏙️ Ciudad</string>
-    <string name="zip_code">📮 Código Postal</string>
-    <string name="process_payment">💳 Procesar Pago</string>
-    <string name="processing_payment">⏳ Procesando pago…</string>
+    <string name="card_number">Número de Tarjeta</string>
+    <string name="expiry_date">MM/AA</string>
+    <string name="cvv">CVV</string>
+    <string name="card_holder">Nombre del Titular</string>
+    <string name="shipping_info">🏠 Información de Envío</string>
+    <string name="address">Dirección Completa</string>
+    <string name="city">Ciudad</string>
+    <string name="zip_code">Código Postal</string>
+    <string name="process_payment">✅ Procesar Pago</string>
 
-    <!-- Payment Success Strings -->
-    <string name="payment_success">✅ ¡Pago Exitoso!</string>
-    <string name="payment_success_message">🎉 Tu pedido ha sido procesado exitosamente. Recibirás una confirmación por email.</string>
+    <!-- Contact -->
+    <string name="contact_us">Contáctenos</string>
+    <string name="we_are_here">Estamos aquí para ayudarte</string>
+    <string name="phone_number">+1 234 567 8900</string>
+    <string name="email">info@arquitech.com</string>
+    <string name="company_address">Av. Principal 123, Ciudad</string>
+    <string name="business_hours">Horario de Atención</string>
+    <string name="week_hours">Lunes a Viernes: 8:00 AM - 6:00 PM</string>
+    <string name="saturday_hours">Sábados: 9:00 AM - 1:00 PM</string>
+    <string name="back_to_home">Volver al Inicio</string>
+
+    <!-- Landing Page -->
+    <string name="hello_user">¡Hola, Usuario!</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="our_services">🔧 Nuestros Servicios</string>
+    <string name="hire">Contratar</string>
+    <string name="our_projects">🏗️ Nuestros Proyectos</string>
+    <string name="our_team">👥 Nuestro Equipo</string>
+    <string name="design_specialist">Especialista en diseño</string>
+    <string name="structural_engineer">Ingeniera estructural</string>
+    <string name="technical_assistant">Asistente técnico</string>
+    <string name="featured_products">🛍️ Productos Destacados</string>
+    <string name="services_nav">Servicios</string>
+    <string name="contact_nav">Contacto</string>
+    <string name="store_nav">Tienda</string>
+    <string name="profile_nav">Perfil</string>
+    <string name="settings_nav">Ajustes</string>
+
+    <!-- Order Details -->
+    <string name="order_detail">📋 Detalle del Pedido</string>
+    <string name="back">← Atrás</string>
+    <string name="order_information">📋 Información del Pedido</string>
+    <string name="order_number">Número:</string>
+    <string name="date">Fecha:</string>
+    <string name="status">Estado:</string>
+    <string name="address_label">Dirección:</string>
+    <string name="payment_method">Pago:</string>
+    <string name="products">🛒 Productos</string>
+
+    <!-- Order History -->
+    <string name="my_orders">📋 Mis Pedidos</string>
+    <string name="empty_orders">📭 No tienes pedidos aún\n\nRealiza tu primera compra para ver tu historial aquí</string>
+    <string name="back_to_store">🛍️ Volver a la Tienda</string>
+
+    <!-- Payment Success -->
+    <string name="payment_success">🎉 ¡Pago Exitoso!</string>
+    <string name="payment_success_message">Tu pedido ha sido procesado exitosamente. Recibirás una confirmación por email.</string>
     <string name="order_details">📋 Detalles del Pedido</string>
-    <string name="order_number">🔢 Número de Orden:</string>
-    <string name="total_paid">💰 Total Pagado:</string>
+    <string name="order_number_label">Número de Orden:</string>
+    <string name="total_paid">Total Pagado:</string>
     <string name="view_orders">📋 Ver Mis Pedidos</string>
 
-    <!-- Validation Messages -->
-    <string name="error_invalid_card">❌ Número de tarjeta inválido</string>
-    <string name="error_invalid_expiry">❌ Fecha de expiración inválida</string>
-    <string name="error_invalid_cvv">❌ CVV inválido</string>
-    <string name="error_required_field">⚠️ Este campo es requerido</string>
+    <!-- Search -->
+    <string name="search_hint">🔍 Buscar productos…</string>
+    <string name="clear_search">Limpiar búsqueda</string>
+
+    <!-- Service Detail -->
+    <string name="our_services_title">Nuestros Servicios</string>
+    <string name="description">Descripción</string>
+    <string name="included_features">Características Incluidas</string>
+    <string name="feature_detailed_plans">Planos arquitectónicos detallados</string>
+    <string name="feature_3d_renders">Renders 3D de alta calidad</string>
+    <string name="feature_personal_advice">Asesoría personalizada</string>
+    <string name="feature_floor_plans">Planos de plantas arquitectónicas</string>
+    <string name="feature_elevations">Elevaciones y cortes</string>
+    <string name="feature_construction_details">Detalles constructivos</string>
+    <string name="feature_site_supervision">Supervisión en sitio</string>
+    <string name="feature_progress_reports">Reportes de avance</string>
+    <string name="feature_quality_control">Control de calidad</string>
+
+    <!-- Settings -->
+    <string name="settings">Configuración</string>
+    <string name="appearance">Apariencia</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="language">Idioma</string>
+    <string name="app_language">Idioma de la aplicación</string>
+    <string name="spanish">Español</string>
+    <string name="account">Cuenta</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="change_password">Cambiar Contraseña</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="push_notifications">Notificaciones Push</string>
+    <string name="app_version">Versión 1.0.0</string>
+
+    <!-- Store -->
+    <string name="constru_max">🏗️ ConstruMax Pro</string>
+    <string name="all_categories">📂 Todas</string>
+    <string name="tools">🛠️ Herramientas</string>
+    <string name="materials">🏗️ Materiales</string>
+    <string name="rental">📦 Alquiler</string>
+
+    <!-- User Profile -->
+    <string name="welcome_back">Bienvenido de vuelta</string>
+    <string name="user_name">Carlos Sánchez</string>
+    <string name="user_email">car.enc@gmail.com</string>
+    <string name="quick_navigation">Navegación Rápida</string>
+    <string name="home">Inicio</string>
+    <string name="professional_solutions">Soluciones Arquitectónicas Profesionales</string>
+    <string name="company_description">Especialistas en diseño, planos y supervisión de proyectos arquitectónicos. Calidad y profesionalismo garantizado.</string>
+
+    <!-- Item Strings -->
+    <string name="activity_title_default">Título de Actividad</string>
+    <string name="activity_description_default">Descripción de la actividad</string>
+    <string name="activity_time_default">Hora de la actividad</string>
+    <string name="product_name">Nombre Producto</string>
+    <string name="product_description">Descripción del producto</string>
+    <string name="default_price">$0.00</string>
+    <string name="rent_price">Renta: $0.00/día</string>
+    <string name="stock">Stock: 0</string>
+    <string name="add_to_cart">🛒 Añadir</string>
+    <string name="processing_status">🔄 Procesando</string>
+    <string name="sample_date">01/12/2023 14:30</string>
+    <string name="sample_amount">$125.50</string>
+
+    <!-- Content Descriptions -->
+    <string name="desc_profile_image">Foto de perfil del usuario</string>
+    <string name="desc_activity_icon">Icono de actividad</string>
+    <string name="producto_foto_desc">Foto del producto</string>
+    <string name="cart">Carrito de compras</string>
+
 </resources>

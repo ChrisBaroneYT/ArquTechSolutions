@@ -75,7 +75,7 @@
                         android:id="@+id/tvWelcomeUser"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¡Hola, Usuario!"
+                        android:text="@string/hello_user"
                         android:textColor="@color/purple_500"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -86,7 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:text="Cerrar Sesión"
+                        android:text="@string/logout"
                         android:textColor="@color/teal_700"
                         android:textSize="12sp" />
 
@@ -128,7 +128,7 @@
 
             </LinearLayout>
 
-            <!-- SECCIÓN: Nuestros Servicios - INMEDIATAMENTE DESPUÉS DEL LOGO -->
+            <!-- SECCIÓN: Nuestros Servicios - MODIFICADA -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     android:drawablePadding="8dp"
                     android:drawableStart="@android:drawable/ic_menu_manage"
                     android:gravity="start"
-                    android:text="🔧 Nuestros Servicios"
+                    android:text="@string/our_services"
                     android:textColor="@color/purple_500"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -198,7 +198,7 @@
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Contratar"
+                                android:text="@string/hire"
                                 android:textSize="12sp"
                                 android:backgroundTint="@color/purple_500"
                                 android:textColor="@color/white"
@@ -254,7 +254,7 @@
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Contratar"
+                                android:text="@string/hire"
                                 android:textSize="12sp"
                                 android:backgroundTint="@color/purple_500"
                                 android:textColor="@color/white"
@@ -310,7 +310,7 @@
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Contratar"
+                                android:text="@string/hire"
                                 android:textSize="12sp"
                                 android:backgroundTint="@color/purple_500"
                                 android:textColor="@color/white"
@@ -326,7 +326,7 @@
 
             </LinearLayout>
 
-            <!-- Slider de Proyectos - DESPUÉS DE SERVICIOS -->
+            <!-- Slider de Proyectos - MODIFICADO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -340,7 +340,7 @@
                     android:drawablePadding="8dp"
                     android:drawableStart="@android:drawable/ic_menu_gallery"
                     android:gravity="start"
-                    android:text="🏗️ Nuestros Proyectos"
+                    android:text="@string/our_projects"
                     android:textColor="@color/purple_500"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -361,7 +361,7 @@
 
             </LinearLayout>
 
-            <!-- Nuestro Equipo CON IMÁGENES - DESPUÉS DE PROYECTOS -->
+            <!-- Nuestro Equipo - MODIFICADO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -375,7 +375,7 @@
                     android:drawablePadding="8dp"
                     android:drawableStart="@android:drawable/ic_menu_my_calendar"
                     android:gravity="start"
-                    android:text="👥 Nuestro Equipo"
+                    android:text="@string/our_team"
                     android:textColor="@color/purple_500"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -408,7 +408,7 @@
                                 android:layout_height="100dp"
                                 android:src="@drawable/ing_juan"
                                 android:scaleType="centerCrop"
-                                android:contentDescription="Arquitecto Juan"
+                                android:contentDescription="@string/desc_servicio_diseno"
                                 android:layout_marginBottom="12dp" />
 
                             <TextView
@@ -430,7 +430,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Especialista en diseño"
+                                android:text="@string/design_specialist"
                                 android:textColor="@color/gray"
                                 android:textSize="12sp"
                                 android:textAlignment="center" />
@@ -460,7 +460,7 @@
                                 android:layout_height="100dp"
                                 android:src="@drawable/ing_maria"
                                 android:scaleType="centerCrop"
-                                android:contentDescription="Ingeniera María"
+                                android:contentDescription="@string/desc_servicio_planos"
                                 android:layout_marginBottom="12dp" />
 
                             <TextView
@@ -482,7 +482,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ingeniera estructural"
+                                android:text="@string/structural_engineer"
                                 android:textColor="@color/gray"
                                 android:textSize="12sp"
                                 android:textAlignment="center" />
@@ -512,7 +512,7 @@
                                 android:layout_height="100dp"
                                 android:src="@drawable/ayud_carlos"
                                 android:scaleType="centerCrop"
-                                android:contentDescription="Ayudante Carlos"
+                                android:contentDescription="@string/desc_servicio_supervision"
                                 android:layout_marginBottom="12dp" />
 
                             <TextView
@@ -534,7 +534,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Asistente técnico"
+                                android:text="@string/technical_assistant"
                                 android:textColor="@color/gray"
                                 android:textSize="12sp"
                                 android:textAlignment="center" />
@@ -547,7 +547,7 @@
 
             </LinearLayout>
 
-            <!-- SECCIÓN: Tienda - Slider de Productos - AL FINAL -->
+            <!-- SECCIÓN: Tienda - Slider de Productos - MODIFICADO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -561,7 +561,7 @@
                     android:drawablePadding="8dp"
                     android:drawableStart="@android:drawable/ic_menu_save"
                     android:gravity="start"
-                    android:text="🛍️ Productos Destacados"
+                    android:text="@string/featured_products"
                     android:textColor="@color/purple_500"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -584,11 +584,11 @@
 
             </LinearLayout>
 
-        </LinearLayout>
+        </LinearLayout> <!-- CIERRE del LinearLayout principal del ScrollView -->
 
-    </ScrollView>
+    </ScrollView> <!-- CIERRE del ScrollView -->
 
-    <!-- Navegación Inferior FIJA - MEJORADA -->
+    <!-- Navegación Inferior - MODIFICADA -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -604,7 +604,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Servicios"
+            android:text="@string/services_nav"
             android:textSize="11sp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:textColor="@color/purple_500"
@@ -616,7 +616,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Contacto"
+            android:text="@string/contact_nav"
             android:textSize="11sp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:textColor="@color/purple_500"
@@ -628,7 +628,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tienda"
+            android:text="@string/store_nav"
             android:textSize="11sp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:textColor="@color/purple_500"
@@ -640,7 +640,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Perfil"
+            android:text="@string/profile_nav"
             android:textSize="11sp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:textColor="@color/purple_500"
@@ -652,7 +652,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ajustes"
+            android:text="@string/settings_nav"
             android:textSize="11sp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:textColor="@color/purple_500"
@@ -661,4 +661,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</RelativeLayout> <!-- CIERRE del RelativeLayout principal -->
