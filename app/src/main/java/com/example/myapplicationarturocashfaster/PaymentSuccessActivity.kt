@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class PaymentSuccessActivity : AppCompatActivity() {
+class PaymentSuccessActivity : BaseActivity() {
 
     private lateinit var tvOrderNumber: TextView
     private lateinit var tvTotalAmount: TextView

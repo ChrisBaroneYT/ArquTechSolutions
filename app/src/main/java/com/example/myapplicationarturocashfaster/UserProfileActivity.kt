@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import java.util.*
 
-class UserProfileActivity : AppCompatActivity() {
+class UserProfileActivity : BaseActivity() {
 
     private lateinit var tvDashboardWelcome: TextView
     private lateinit var tvDashboardUserName: TextView

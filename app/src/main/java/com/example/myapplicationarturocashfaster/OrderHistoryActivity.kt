@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class OrderHistoryActivity : AppCompatActivity() {
+class OrderHistoryActivity : BaseActivity() {
 
     private lateinit var rvOrders: RecyclerView
     private lateinit var tvEmptyOrders: TextView

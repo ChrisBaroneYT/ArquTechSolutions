@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class StoreActivity : AppCompatActivity() {
+class StoreActivity : BaseActivity() {
 
     private lateinit var rvProducts: RecyclerView
     private lateinit var tvCartCount: TextView

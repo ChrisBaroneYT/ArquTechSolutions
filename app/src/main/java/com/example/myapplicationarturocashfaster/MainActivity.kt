@@ -18,7 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplicationarturocashfaster.adapters.SliderAdapter
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var viewPagerSlider: ViewPager2
     private lateinit var layoutDots: LinearLayout
@@ -95,6 +95,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.onAttach(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 

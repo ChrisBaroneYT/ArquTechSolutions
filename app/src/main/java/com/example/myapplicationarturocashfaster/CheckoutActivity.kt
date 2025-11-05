@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckoutActivity : AppCompatActivity() {
+class CheckoutActivity : BaseActivity() {
 
     private lateinit var tvOrderSummary: TextView
     private lateinit var tvTotalAmount: TextView

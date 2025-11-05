@@ -11,7 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class ServiceDetailActivity : AppCompatActivity() {
+class ServiceDetailActivity : BaseActivity() {
 
     // IDs para el primer servicio (Diseño)
     private lateinit var serviceImage: ImageView

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     private lateinit var darkModeSwitch: SwitchMaterial
     private lateinit var notificationsSwitch: SwitchMaterial
@@ -22,7 +22,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var btnBack: android.widget.ImageButton
 
     private lateinit var sharedPreferences: SharedPreferences
-    private var isThemeChanging = false // Bandera para evitar bucles
+    private var isThemeChanging = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,17 +58,12 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        // Modo Oscuro - CORREGIDO: Evitar bucle
+        // Modo Oscuro
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            // Si ya estamos cambiando el tema, ignorar
             if (isThemeChanging) return@setOnCheckedChangeListener
 
             Log.d("SETTINGS_DEBUG", "🔄 Modo oscuro cambiado a: $isChecked")
-
-            // Guardar preferencia primero
             saveSetting("dark_mode", isChecked)
-
-            // Activar bandera para evitar bucles
             isThemeChanging = true
 
             val nightMode = if (isChecked) {
@@ -77,19 +72,14 @@ class SettingsActivity : AppCompatActivity() {
                 AppCompatDelegate.MODE_NIGHT_NO
             }
 
-            // Aplicar el modo inmediatamente
             AppCompatDelegate.setDefaultNightMode(nightMode)
 
-            // Mensaje informativo
             val message = if (isChecked) {
                 "Modo oscuro activado"
             } else {
                 "Modo claro activado"
             }
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-            // NO recrear la actividad inmediatamente - dejar que AppCompatDelegate maneje el cambio
-            // El sistema recreará automáticamente la actividad si es necesario
         }
 
         // Notificaciones
@@ -102,7 +92,7 @@ class SettingsActivity : AppCompatActivity() {
             saveSetting("notifications", isChecked)
         }
 
-        // Idioma
+        // Idioma - MODIFICADO: Ahora cambia el idioma de toda la app
         languageOption.setOnClickListener {
             showLanguageDialog()
         }
@@ -124,25 +114,57 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    // NUEVO: Diálogo mejorado para selección de idioma
     private fun showLanguageDialog() {
         val languages = arrayOf("Español", "English", "Português")
-        val currentLanguage = sharedPreferences.getString("language", "Español")
+        val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
+        val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
+
+        val currentIndex = languages.indexOf(currentLanguageName)
 
         android.app.AlertDialog.Builder(this)
             .setTitle("Seleccionar idioma")
-            .setSingleChoiceItems(languages, languages.indexOf(currentLanguage)) { dialog, which ->
-                val selectedLanguage = languages[which]
-                tvCurrentLanguage.text = selectedLanguage
-                saveSetting("language", selectedLanguage)
-                Toast.makeText(this, "Idioma cambiado a: $selectedLanguage", Toast.LENGTH_SHORT).show()
+            .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
+                val selectedLanguageName = languages[which]
+                val selectedLanguageCode = LocaleHelper.getLanguageCode(selectedLanguageName)
+
+                // Cambiar el idioma inmediatamente
+                changeAppLanguage(selectedLanguageCode, selectedLanguageName)
                 dialog.dismiss()
             }
             .setNegativeButton("Cancelar", null)
             .show()
     }
 
+    // NUEVA FUNCIÓN: Cambiar idioma de la aplicación
+    private fun changeAppLanguage(languageCode: String, languageName: String) {
+        // Guardar la preferencia de idioma
+        saveSetting("language", languageCode)
+
+        // Aplicar el nuevo idioma
+        val context = LocaleHelper.setLocale(this, languageCode)
+
+        // Actualizar la interfaz
+        tvCurrentLanguage.text = languageName
+
+        // Mostrar mensaje
+        Toast.makeText(this, "Idioma cambiado a: $languageName", Toast.LENGTH_SHORT).show()
+
+        // Reiniciar la actividad para aplicar los cambios
+        recreateActivity()
+    }
+
+    // NUEVA FUNCIÓN: Reiniciar la actividad para aplicar el nuevo idioma
+    private fun recreateActivity() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
     private fun loadCurrentSettings() {
-        // Cargar modo oscuro desde preferencias directamente
+        // Cargar modo oscuro
         val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
         darkModeSwitch.isChecked = isDarkMode
         Log.d("SETTINGS_DEBUG", "📱 Modo oscuro cargado: $isDarkMode")
@@ -151,9 +173,10 @@ class SettingsActivity : AppCompatActivity() {
         val notificationsEnabled = sharedPreferences.getBoolean("notifications", true)
         notificationsSwitch.isChecked = notificationsEnabled
 
-        // Idioma
-        val currentLanguage = sharedPreferences.getString("language", "Español")
-        tvCurrentLanguage.text = currentLanguage
+        // Idioma - MODIFICADO: Usar LocaleHelper
+        val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
+        val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
+        tvCurrentLanguage.text = currentLanguageName
     }
 
     private fun setupAppVersion() {
@@ -187,12 +210,10 @@ class SettingsActivity : AppCompatActivity() {
         Log.d("SETTINGS_DEBUG", "💾 Configuración guardada: $key = $value")
     }
 
-    // CORREGIDO: Aplicar tema sin forzar recreación
     private fun applyThemeFromPreferences() {
         val prefs = getSharedPreferences("app_settings", MODE_PRIVATE)
         val isDarkMode = prefs.getBoolean("dark_mode", false)
 
-        // Solo aplicar si es diferente al actual
         val currentNightMode = AppCompatDelegate.getDefaultNightMode()
         val shouldBeDark = isDarkMode
         val isCurrentlyDark = currentNightMode == AppCompatDelegate.MODE_NIGHT_YES
@@ -210,18 +231,15 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Resetear la bandera cuando la actividad se reanuda
         isThemeChanging = false
         logCurrentTheme()
     }
 
     override fun onPause() {
         super.onPause()
-        // Resetear la bandera cuando la actividad se pausa
         isThemeChanging = false
     }
 
-    // Para debugging del tema actual
     private fun logCurrentTheme() {
         val currentNightMode = AppCompatDelegate.getDefaultNightMode()
         val themeInfo = when (currentNightMode) {
@@ -233,6 +251,4 @@ class SettingsActivity : AppCompatActivity() {
         }
         Log.d("SETTINGS_DEBUG", "🎨 Tema actual: $themeInfo")
     }
-
-    // ELIMINADO: recreateWithDelay() - Ya no es necesario
 }
