@@ -1,47 +1,57 @@
 # ArquTechSolutions 🌟
 
-Este proyecto es una aplicación web desarrollada para **ArquTechSolutions**, una empresa ficticia especializada en soluciones arquitectónicas innovadoras que combinan diseño estético con tecnología de vanguardia.
+Este proyecto es una aplicación móvil desarrollada para **ArquTechSolutions**, una empresa ficticia especializada en soluciones arquitectónicas innovadoras que combinan diseño estético con tecnología de vanguardia.
 
 ## 🚀 Características
 
-- **Diseño responsivo** que se adapta a diferentes dispositivos
+- **Diseño nativo** optimizado para Android
 - **Interfaz moderna** y profesional acorde al sector arquitectónico
-- **Navegación intuitiva** con secciones bien definidas
-- **Formulario de contacto** funcional
+- **Navegación intuitiva** con pantallas bien definidas
+- **Formularios interactivos** para contacto y cotizaciones
 - **Galería de proyectos** destacados
-- **Animaciones suaves** para mejorar la experiencia de usuario
+- **Animaciones fluidas** para mejorar la experiencia de usuario
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos y diseño responsivo
-- **JavaScript** - Interactividad y funcionalidades
-- **Font Awesome** - Iconografía
-- **Google Fonts** - Tipografía moderna
+- **Kotlin** - Lenguaje de programación principal
+- **XML** - Diseño de interfaces de usuario
+- **Android Studio** - Entorno de desarrollo
+- **Drawables** - Recursos gráficos y vectores
+- **Material Design** - Componentes de UI modernos
 
 ## 📁 Estructura del Proyecto
 
 ```
 ArquTechSolutions/
 │
-├── index.html          # Página principal
-├── styles/
-│   └── style.css       # Estilos principales
-├── scripts/
-│   └── script.js       # Funcionalidades JavaScript
-├── images/             # Recursos gráficos
-└── README.md
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/arqutechsolutions/
+│   │   │   │   ├── activities/          # Actividades principales
+│   │   │   │   ├── adapters/            # Adaptadores para RecyclerView
+│   │   │   │   ├── models/              # Modelos de datos
+│   │   │   │   └── fragments/           # Fragmentos de UI
+│   │   │   ├── res/
+│   │   │   │   ├── layout/              # Archivos XML de layout
+│   │   │   │   ├── drawable/            # Recursos gráficos
+│   │   │   │   ├── values/              # Colores, strings, estilos
+│   │   │   │   └── menu/                # Menús de navegación
+│   │   │   └── AndroidManifest.xml
+│   ├── build.gradle.kts
+│   └── proguard-rules.pro
+├── gradle/
+└── build.gradle.kts
 ```
 
-## 🎯 Secciones Principales
+## 🎯 Pantallas Principales
 
-1. **Header** - Navegación y presentación inicial
-2. **Servicios** - Catálogo de servicios profesionales
-3. **Proyectos** - Galería de trabajos realizados
-4. **Sobre Nosotros** - Información de la empresa
-5. **Testimonios** - Opiniones de clientes
-6. **Contacto** - Formulario de contacto
-7. **Footer** - Información adicional y enlaces
+1. **MainActivity** - Pantalla principal con navegación
+2. **ServiciosActivity** - Catálogo de servicios profesionales
+3. **ProyectosActivity** - Galería de trabajos realizados
+4. **NosotrosActivity** - Información de la empresa
+5. **ContactoActivity** - Formulario de contacto
+6. **DetalleProyectoActivity** - Vista detallada de proyectos
 
 ## 🚀 Instalación y Uso
 
@@ -51,33 +61,43 @@ ArquTechSolutions/
    ```
 
 2. **Abre el proyecto:**
-   - Navega a la carpeta del proyecto
-   - Abre el archivo `index.html` en tu navegador
+   - Abre Android Studio
+   - Selecciona "Open an existing project"
+   - Navega a la carpeta del proyecto y ábrelo
 
-3. **Personalización:**
-   - Modifica los estilos en `styles/style.css`
-   - Actualiza el contenido en `index.html`
-   - Ajusta las funcionalidades en `scripts/script.js`
+3. **Configura el entorno:**
+   - Asegúrate de tener Android Studio Arctic Fox o superior
+   - Verifica que el SDK de Android esté actualizado
+   - Sincroniza las dependencias de Gradle
+
+4. **Ejecuta la aplicación:**
+   - Conecta un dispositivo Android o inicia un emulador
+   - Haz clic en "Run" ▶️ para compilar y ejecutar
 
 ## 🎨 Personalización
 
-### Colores Principales
-```css
---primary-color: #2c3e50;
---secondary-color: #3498db;
---accent-color: #e74c3c;
+### Colores Principales (colors.xml)
+```xml
+<color name="primary_color">#2c3e50</color>
+<color name="secondary_color">#3498db</color>
+<color name="accent_color">#e74c3c</color>
 ```
 
-### Fuentes
-- **Títulos:** 'Montserrat', sans-serif
-- **Texto:** 'Open Sans', sans-serif
+### Estilos (styles.xml)
+```xml
+<style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <item name="colorPrimary">@color/primary_color</item>
+    <item name="colorPrimaryVariant">@color/secondary_color</item>
+    <item name="colorOnPrimary">@android:color/white</item>
+</style>
+```
 
-## 📱 Responsive Design
+## 📱 Compatibilidad
 
 La aplicación está optimizada para:
-- 📱 Dispositivos móviles (≥ 320px)
-- 📟 Tablets (≥ 768px) 
-- 💻 Desktop (≥ 1024px)
+- 📱 Android 8.0 (API level 26) y superior
+- 📟 Tablets y dispositivos móviles
+- 💻 Diferentes densidades de pantalla (mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi)
 
 ## 🤝 Contribución
 
