@@ -136,13 +136,12 @@ class SettingsActivity : BaseActivity() {
             .show()
     }
 
-    // NUEVA FUNCIÓN: Cambiar idioma de la aplicación
     private fun changeAppLanguage(languageCode: String, languageName: String) {
         // Guardar la preferencia de idioma
         saveSetting("language", languageCode)
 
-        // Aplicar el nuevo idioma
-        val context = LocaleHelper.setLocale(this, languageCode)
+        // Aplicar el nuevo idioma usando LocaleHelper
+        LocaleHelper.setLocale(this, languageCode)
 
         // Actualizar la interfaz
         tvCurrentLanguage.text = languageName
@@ -150,8 +149,16 @@ class SettingsActivity : BaseActivity() {
         // Mostrar mensaje
         Toast.makeText(this, "Idioma cambiado a: $languageName", Toast.LENGTH_SHORT).show()
 
-        // Reiniciar la actividad para aplicar los cambios
-        recreateActivity()
+        // Reiniciar TODA la aplicación para aplicar el idioma
+        restartApp()
+    }
+
+    // Función para reiniciar toda la aplicación
+    private fun restartApp() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finishAffinity() // Cierra todas las actividades
     }
 
     // NUEVA FUNCIÓN: Reiniciar la actividad para aplicar el nuevo idioma

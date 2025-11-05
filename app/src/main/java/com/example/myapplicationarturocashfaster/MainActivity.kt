@@ -95,9 +95,13 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        LocaleHelper.onAttach(this)
-
         super.onCreate(savedInstanceState)
+
+        // DEBUG: Verificar idioma actual
+        val currentLanguage = LocaleHelper.getPersistedLocale(this)
+        val currentLanguageName = LocaleHelper.getLanguageName(currentLanguage)
+        Log.d("LANGUAGE_DEBUG", "🌍 Idioma actual: $currentLanguage ($currentLanguageName)")
+
         setContentView(R.layout.activity_landing)
 
         initViews()
