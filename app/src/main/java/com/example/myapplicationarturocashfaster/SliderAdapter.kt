@@ -1,5 +1,6 @@
 package com.example.myapplicationarturocashfaster.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,10 @@ class SliderAdapter(private val images: List<Int>) :
     }
 
     override fun onBindViewHolder(holder: SliderViewHolder, position: Int) {
-        holder.imageView.setImageResource(images[position])
+        val imageRes = images[position]
+        // DEBUG: Verificar que las imágenes se cargan
+        Log.d("SliderAdapter", "Loading image at position $position - Resource: $imageRes")
+        holder.imageView.setImageResource(imageRes)
     }
 
     override fun getItemCount(): Int = images.size

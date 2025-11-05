@@ -1,532 +1,664 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fillViewport="true">
+    android:background="@color/white">
 
-    <LinearLayout
+    <!-- ScrollView para el contenido principal -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:layout_above="@+id/bottomNavigation">
 
-        <!-- Header Dinámico (Login/Registro o Bienvenida) -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-            <!-- Layout para usuario NO logueado -->
-            <LinearLayout
-                android:id="@+id/layoutNotLoggedIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <Button
-                    android:id="@+id/btnLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="@string/login"
-                    android:textColor="@color/purple_500"
-                    android:textSize="14sp" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:background="@color/gray" />
-
-                <Button
-                    android:id="@+id/btnRegister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="@string/registrarse"
-                    android:textColor="@color/purple_500"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <!-- Layout para usuario LOGUEADO -->
-            <LinearLayout
-                android:id="@+id/layoutLoggedIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/tvWelcomeUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¡Hola, Usuario!"
-                    android:textColor="@color/purple_500"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="12dp" />
-
-                <Button
-                    android:id="@+id/btnLogoutMain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:text="Cerrar Sesión"
-                    android:textColor="@color/teal_700"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <!-- Logo y Título -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="32dp">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:contentDescription="@string/logo_arquitech"
-                android:src="@drawable/logo_arquitech" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/arquitech"
-                android:textColor="@color/purple_500"
-                android:textSize="36sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/soluciones_arquitectonicas"
-                android:textColor="@color/teal_700"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <!-- Slider de Proyectos -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerSlider"
+            <!-- Header Dinámico (Login/Registro o Bienvenida) -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:background="@color/white"
+                android:elevation="4dp">
 
+                <!-- Layout para usuario NO logueado -->
+                <LinearLayout
+                    android:id="@+id/layoutNotLoggedIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="@string/login"
+                        android:textColor="@color/purple_500"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@color/gray" />
+
+                    <Button
+                        android:id="@+id/btnRegister"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="@string/registrarse"
+                        android:textColor="@color/purple_500"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <!-- Layout para usuario LOGUEADO -->
+                <LinearLayout
+                    android:id="@+id/layoutLoggedIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvWelcomeUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¡Hola, Usuario!"
+                        android:textColor="@color/purple_500"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="12dp" />
+
+                    <Button
+                        android:id="@+id/btnLogoutMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="Cerrar Sesión"
+                        android:textColor="@color/teal_700"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- Logo y Título - MEJORADO -->
             <LinearLayout
-                android:id="@+id/layoutDots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp" />
+                android:orientation="vertical"
+                android:padding="32dp"
+                android:background="@color/purple_500">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivLogo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/logo_arquitech"
+                    android:src="@drawable/logo" />
 
-        <!-- Nuestros Servicios -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/arquitech"
+                    android:textColor="@color/white"
+                    android:textSize="42sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_menu_edit"
-                android:gravity="start"
-                android:text="@string/nuestros_servicios"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/soluciones_arquitectonicas"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
 
+            </LinearLayout>
+
+            <!-- SECCIÓN: Nuestros Servicios - INMEDIATAMENTE DESPUÉS DEL LOGO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white">
 
-                <!-- Servicio 1: Diseño -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@android:drawable/ic_menu_manage"
+                    android:gravity="start"
+                    android:text="🔧 Nuestros Servicios"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- IMAGEN DEL SERVICIO DE DISEÑO -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/diseno"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="@string/desc_servicio_diseno"
-                            android:layout_marginBottom="12dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/diseno"
-                            android:textColor="@color/purple_500"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/precio_500"
-                            android:textColor="@color/teal_700"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- Servicio 2: Planos -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <!-- Servicio 1: Diseño -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:cardBackgroundColor="@color/white">
 
-                        <!-- IMAGEN DEL SERVICIO DE PLANOS -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/planos"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="@string/desc_servicio_planos"
-                            android:layout_marginBottom="12dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/planos"
-                            android:textColor="@color/purple_500"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/diseno"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/desc_servicio_diseno"
+                                android:layout_marginBottom="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/diseno"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/precio_500"
+                                android:textColor="@color/teal_700"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contratar"
+                                android:textSize="12sp"
+                                android:backgroundTint="@color/purple_500"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="8dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="4dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Servicio 2: Planos -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/precio_300"
-                            android:textColor="@color/teal_700"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/planos"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/desc_servicio_planos"
+                                android:layout_marginBottom="12dp" />
 
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planos"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
-                <!-- Servicio 3: Supervisión -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/precio_300"
+                                android:textColor="@color/teal_700"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contratar"
+                                android:textSize="12sp"
+                                android:backgroundTint="@color/purple_500"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="8dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="4dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Servicio 3: Supervisión -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/supervision"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="@string/desc_servicio_supervision"
+                                android:layout_marginBottom="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/supervision"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/precio_700"
+                                android:textColor="@color/teal_700"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contratar"
+                                android:textSize="12sp"
+                                android:backgroundTint="@color/purple_500"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="8dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="4dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Slider de Proyectos - DESPUÉS DE SERVICIOS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@android:drawable/ic_menu_gallery"
+                    android:gravity="start"
+                    android:text="🏗️ Nuestros Proyectos"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+            <!-- Nuestro Equipo CON IMÁGENES - DESPUÉS DE PROYECTOS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                    android:gravity="start"
+                    android:text="👥 Nuestro Equipo"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!-- Miembro 1: Arq. Juan -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-                        <!-- IMAGEN DEL SERVICIO DE SUPERVISIÓN -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/supervision"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="@string/desc_servicio_supervision"
-                            android:layout_marginBottom="12dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/supervision"
-                            android:textColor="@color/purple_500"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ing_juan"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Arquitecto Juan"
+                                android:layout_marginBottom="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/arq"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/juan"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Especialista en diseño"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Miembro 2: Ing. María -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/precio_700"
-                            android:textColor="@color/teal_700"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ing_maria"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Ingeniera María"
+                                android:layout_marginBottom="12dp" />
 
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ing"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/maria"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ingeniera estructural"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Miembro 3: Ayud. Carlos -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ayud_carlos"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Ayudante Carlos"
+                                android:layout_marginBottom="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ayud"
+                                android:textColor="@color/purple_500"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/carlos"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Asistente técnico"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- SECCIÓN: Tienda - Slider de Productos - AL FINAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@android:drawable/ic_menu_save"
+                    android:gravity="start"
+                    android:text="🛍️ Productos Destacados"
+                    android:textColor="@color/purple_500"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="@android:color/transparent"
+                    android:padding="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutStoreDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- Nuestro Equipo CON IMÁGENES -->
-        <LinearLayout
-            android:layout_width="match_parent"
+    </ScrollView>
+
+    <!-- Navegación Inferior FIJA - MEJORADA -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:elevation="16dp"
+        android:paddingVertical="8dp">
+
+        <Button
+            android:id="@+id/btnNavServices"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_weight="1"
+            android:text="Servicios"
+            android:textSize="11sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/purple_500"
+            android:drawableTop="@android:drawable/ic_menu_search"
+            android:drawablePadding="2dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:drawableStart="@android:drawable/ic_menu_my_calendar"
-                android:gravity="start"
-                android:text="@string/nuestro_equipo"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <!-- Miembro 1: Arq. Juan -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- IMAGEN DEL ARQUITECTO -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ing_juan"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Arquitecto Juan"
-                            android:layout_marginBottom="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/arq"
-                            android:textColor="@color/purple_500"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/juan"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- Miembro 2: Ing. María -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- IMAGEN DE LA INGENIERA -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ing_maria"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Ingeniera María"
-                            android:layout_marginBottom="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ing"
-                            android:textColor="@color/purple_500"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/maria"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- Miembro 3: Ayud. Carlos -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- IMAGEN DEL AYUDANTE -->
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/ayud_carlos"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Ayudante Carlos"
-                            android:layout_marginBottom="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ayud"
-                            android:textColor="@color/purple_500"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/carlos"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- ✅ CORREGIDO: Navegación Inferior FUERA de las tarjetas - ACTUALIZADO CON TIENDA -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnNavBookings"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/white"
-            android:elevation="8dp"
-            android:paddingVertical="12dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_weight="1"
+            android:text="Contacto"
+            android:textSize="11sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/purple_500"
+            android:drawableTop="@android:drawable/ic_menu_agenda"
+            android:drawablePadding="2dp" />
 
-            <Button
-                android:id="@+id/btnNavServices"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Servicios"
-                android:textSize="12sp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/purple_500"
-                android:drawableTop="@android:drawable/ic_menu_search"
-                android:drawablePadding="4dp" />
+        <Button
+            android:id="@+id/btnNavStore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tienda"
+            android:textSize="11sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/purple_500"
+            android:drawableTop="@android:drawable/ic_menu_save"
+            android:drawablePadding="2dp" />
 
-            <Button
-                android:id="@+id/btnNavBookings"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="CONTACTENOS"
-                android:textSize="12sp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/purple_500"
-                android:drawableTop="@android:drawable/ic_menu_agenda"
-                android:drawablePadding="4dp" />
+        <Button
+            android:id="@+id/btnNavProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Perfil"
+            android:textSize="11sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/purple_500"
+            android:drawableTop="@android:drawable/ic_menu_myplaces"
+            android:drawablePadding="2dp" />
 
-            <!-- NUEVO: Botón de Tienda -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNavStore"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tienda"
-                android:textSize="12sp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/purple_500"
-                app:icon="@drawable/ic_store"
-                app:iconGravity="textTop"
-                app:iconPadding="4dp"
-                app:iconTint="@color/purple_500" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNavProfile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Perfil"
-                android:textSize="12sp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/purple_500"
-                app:icon="@android:drawable/ic_menu_myplaces"
-                app:iconGravity="textTop"
-                app:iconPadding="4dp"
-                app:iconTint="@color/purple_500" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnNavSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ajustes"
+            android:textSize="11sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textColor="@color/purple_500"
+            android:drawableTop="@android:drawable/ic_menu_preferences"
+            android:drawablePadding="2dp" />
 
     </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

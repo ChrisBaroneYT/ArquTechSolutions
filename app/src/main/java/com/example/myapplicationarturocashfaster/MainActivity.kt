@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -26,34 +27,51 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sliderAdapter: SliderAdapter
     private lateinit var dots: Array<ImageView?>
 
+    // NUEVAS VARIABLES PARA SLIDER DE PRODUCTOS
+    private lateinit var viewPagerStore: ViewPager2
+    private lateinit var layoutStoreDots: LinearLayout
+    private lateinit var storeSliderAdapter: SliderAdapter
+    private lateinit var storeDots: Array<ImageView?>
+
     // Variables para navegación y usuario
     private lateinit var btnNavServices: Button
     private lateinit var btnNavBookings: Button
     private lateinit var btnNavProfile: Button
-    private lateinit var btnNavStore: Button // NUEVO: Botón para tienda
+    private lateinit var btnNavStore: Button
+    private lateinit var btnNavSettings: Button // ✅ DECLARADO
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var layoutNotLoggedIn: LinearLayout
     private lateinit var layoutLoggedIn: LinearLayout
     private lateinit var tvWelcomeUser: TextView
     private lateinit var btnLogoutMain: Button
 
+    // Slider de Proyectos (original)
     private val sliderImages = intArrayOf(
-        R.drawable.slider1,           // Tu imagen 1 del slider
-        R.drawable.slider1_interior,  // Tu imagen 2 del slider
-        R.drawable.slider2,           // Tu imagen 3 del slider
-        R.drawable.slider2_interior,  // Tu imagen 4 del slider
-        R.drawable.slider3,           // Tu imagen 5 del slider
-        R.drawable.slider3_interior,  // Tu imagen 6 del slider
-        R.drawable.slider4,           // Tu imagen 7 del slider
-        R.drawable.slider4_interior,  // Tu imagen 8 del slider
+        R.drawable.slider1,
+        R.drawable.slider1_interior,
+        R.drawable.slider2,
+        R.drawable.slider2_interior,
+        R.drawable.slider3,
+        R.drawable.slider3_interior,
+        R.drawable.slider4,
+        R.drawable.slider4_interior,
+    )
+
+    // NUEVO: Slider de Productos Destacados
+    private val storeImages = intArrayOf(
+        R.drawable.taladro,
+        R.drawable.martillo,
+        R.drawable.sierra,
+        R.drawable.laser
     )
 
     private var currentPage = 0
-    private val sliderDelay: Long = 2000 // 2 segundos
+    private var currentStorePage = 0
+    private val sliderDelay: Long = 2000
     private val handler = Handler(Looper.getMainLooper())
 
-    // Variable para controlar si el slider está activo
     private var isSliderActive = true
+    private var isStoreSliderActive = true
 
     private val sliderRunnable = object : Runnable {
         override fun run() {
@@ -65,18 +83,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // NUEVO: Runnable para slider de productos
+    private val storeSliderRunnable = object : Runnable {
+        override fun run() {
+            if (isStoreSliderActive) {
+                currentStorePage = (currentStorePage + 1) % storeImages.size
+                viewPagerStore.setCurrentItem(currentStorePage, true)
+                handler.postDelayed(this, sliderDelay)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
         initViews()
         setupSlider()
+        setupStoreSlider()
         setupClickListeners()
-        setupNavigation() // Nueva función de navegación
-        updateUserInterface() // Actualizar interfaz según estado de usuario
+        setupNavigation()
+        updateUserInterface()
 
-        // Iniciar el slider automático
         startAutoSlider()
+        startStoreAutoSlider()
     }
 
     private fun initViews() {
@@ -84,6 +114,10 @@ class MainActivity : AppCompatActivity() {
         layoutDots = findViewById(R.id.layoutDots)
         btnLogin = findViewById(R.id.btnLogin)
         btnRegister = findViewById(R.id.btnRegister)
+
+        // NUEVO: Inicializar vistas del slider de productos
+        viewPagerStore = findViewById(R.id.viewPagerStore)
+        layoutStoreDots = findViewById(R.id.layoutStoreDots)
     }
 
     private fun setupSlider() {
@@ -102,10 +136,9 @@ class MainActivity : AppCompatActivity() {
                 super.onPageScrollStateChanged(state)
                 when (state) {
                     ViewPager2.SCROLL_STATE_DRAGGING -> {
-                        pauseAutoSlider() // Pausar cuando el usuario interactúa
+                        pauseAutoSlider()
                     }
                     ViewPager2.SCROLL_STATE_IDLE -> {
-                        // Reanudar después de 2 segundos de inactividad
                         handler.postDelayed({
                             startAutoSlider()
                         }, sliderDelay)
@@ -115,17 +148,56 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    // FUNCIÓN: Iniciar slider automático
+    // NUEVA FUNCIÓN: Configurar slider de productos
+    private fun setupStoreSlider() {
+        storeSliderAdapter = SliderAdapter(storeImages.toList())
+        viewPagerStore.adapter = storeSliderAdapter
+        setupStoreDots()
+
+        viewPagerStore.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                currentStorePage = position
+                setCurrentStoreDot(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+                when (state) {
+                    ViewPager2.SCROLL_STATE_DRAGGING -> {
+                        pauseStoreAutoSlider()
+                    }
+                    ViewPager2.SCROLL_STATE_IDLE -> {
+                        handler.postDelayed({
+                            startStoreAutoSlider()
+                        }, sliderDelay)
+                    }
+                }
+            }
+        })
+    }
+
     private fun startAutoSlider() {
         isSliderActive = true
-        handler.removeCallbacks(sliderRunnable) // Limpiar cualquier callback previo
+        handler.removeCallbacks(sliderRunnable)
         handler.postDelayed(sliderRunnable, sliderDelay)
     }
 
-    // FUNCIÓN: Pausar slider automático
     private fun pauseAutoSlider() {
         isSliderActive = false
         handler.removeCallbacks(sliderRunnable)
+    }
+
+    // NUEVAS FUNCIONES PARA SLIDER DE PRODUCTOS
+    private fun startStoreAutoSlider() {
+        isStoreSliderActive = true
+        handler.removeCallbacks(storeSliderRunnable)
+        handler.postDelayed(storeSliderRunnable, sliderDelay)
+    }
+
+    private fun pauseStoreAutoSlider() {
+        isStoreSliderActive = false
+        handler.removeCallbacks(storeSliderRunnable)
     }
 
     private fun setupDots() {
@@ -145,8 +217,28 @@ class MainActivity : AppCompatActivity() {
             params.setMargins(8, 0, 8, 0)
             layoutDots.addView(dots[i], params)
         }
-
         setCurrentDot(0)
+    }
+
+    // NUEVA FUNCIÓN: Dots para productos
+    private fun setupStoreDots() {
+        storeDots = arrayOfNulls(storeImages.size)
+        layoutStoreDots.removeAllViews()
+
+        for (i in storeDots.indices) {
+            storeDots[i] = ImageView(this)
+            storeDots[i]?.setImageDrawable(
+                ContextCompat.getDrawable(this, R.drawable.dot_inactive)
+            )
+
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(8, 0, 8, 0)
+            layoutStoreDots.addView(storeDots[i], params)
+        }
+        setCurrentStoreDot(0)
     }
 
     private fun setCurrentDot(position: Int) {
@@ -157,6 +249,18 @@ class MainActivity : AppCompatActivity() {
                 R.drawable.dot_inactive
             }
             dots[i]?.setImageResource(drawable)
+        }
+    }
+
+    // NUEVA FUNCIÓN: Cambiar dot activo para productos
+    private fun setCurrentStoreDot(position: Int) {
+        for (i in storeDots.indices) {
+            val drawable = if (i == position) {
+                R.drawable.dot_active
+            } else {
+                R.drawable.dot_inactive
+            }
+            storeDots[i]?.setImageResource(drawable)
         }
     }
 
@@ -172,15 +276,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // NUEVA FUNCIÓN: Configurar navegación
     private fun setupNavigation() {
         btnNavServices = findViewById(R.id.btnNavServices)
         btnNavBookings = findViewById(R.id.btnNavBookings)
         btnNavProfile = findViewById(R.id.btnNavProfile)
-        btnNavStore = findViewById(R.id.btnNavStore) // NUEVO: Inicializar botón tienda
+        btnNavStore = findViewById(R.id.btnNavStore)
+        btnNavSettings = findViewById(R.id.btnNavSettings) // ✅ INICIALIZADO
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
-        // Inicializar vistas de usuario
         layoutNotLoggedIn = findViewById(R.id.layoutNotLoggedIn)
         layoutLoggedIn = findViewById(R.id.layoutLoggedIn)
         tvWelcomeUser = findViewById(R.id.tvWelcomeUser)
@@ -198,15 +301,24 @@ class MainActivity : AppCompatActivity() {
             navigateToProfile()
         }
 
-        // NUEVO: Navegación a la tienda
         btnNavStore.setOnClickListener {
             navigateToStore()
         }
+
+        // ✅ AGREGAR ESTE LISTENER - ES LO QUE FALTABA
+        btnNavSettings.setOnClickListener {
+            navigateToSettings()
+        }
     }
 
-    // NUEVAS FUNCIONES DE NAVEGACIÓN
     private fun navigateToServiceDetail() {
         val intent = Intent(this, ServiceDetailActivity::class.java)
+        startActivity(intent)
+    }
+
+    // ✅ FUNCIÓN PARA AJUSTES
+    private fun navigateToSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 
@@ -216,7 +328,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ContactActivity::class.java)
             startActivity(intent)
         } else {
-            // Si no está logueado, ir al login primero
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -228,25 +339,21 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, UserProfileActivity::class.java)
             startActivity(intent)
         } else {
-            // Si no está logueado, ir al login primero
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
 
-    // NUEVA FUNCIÓN: Navegación a la tienda
     private fun navigateToStore() {
         val intent = Intent(this, StoreActivity::class.java)
         startActivity(intent)
     }
 
-    // NUEVA FUNCIÓN PARA ACTUALIZAR INTERFAZ DE USUARIO
     private fun updateUserInterface() {
         val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
         val username = sharedPreferences.getString("username", "")
 
         if (isLoggedIn && !username.isNullOrEmpty()) {
-            // Usuario logueado - mostrar bienvenida
             val formattedUsername = username.replaceFirstChar {
                 if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
             }
@@ -255,18 +362,15 @@ class MainActivity : AppCompatActivity() {
             layoutLoggedIn.visibility = View.VISIBLE
             tvWelcomeUser.text = "¡Hola, $formattedUsername!"
 
-            // Configurar logout
             btnLogoutMain.setOnClickListener {
                 showLogoutConfirmation()
             }
         } else {
-            // Usuario no logueado - mostrar login/registro
             layoutNotLoggedIn.visibility = View.VISIBLE
             layoutLoggedIn.visibility = View.GONE
         }
     }
 
-    // FUNCIÓN PARA CERRAR SESIÓN
     private fun showLogoutConfirmation() {
         android.app.AlertDialog.Builder(this)
             .setTitle("Cerrar Sesión")
@@ -286,22 +390,27 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
 
         Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
-        updateUserInterface() // Actualizar la interfaz
+        updateUserInterface()
     }
 
     override fun onResume() {
         super.onResume()
         startAutoSlider()
-        updateUserInterface() // Actualizar interfaz al volver
+        startStoreAutoSlider()
+        updateUserInterface()
     }
 
     override fun onPause() {
         super.onPause()
         pauseAutoSlider()
+        pauseStoreAutoSlider()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         pauseAutoSlider()
+        pauseStoreAutoSlider()
+        handler.removeCallbacks(sliderRunnable)
+        handler.removeCallbacks(storeSliderRunnable)
     }
 }
