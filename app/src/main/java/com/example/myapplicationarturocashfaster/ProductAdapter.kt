@@ -36,7 +36,7 @@ class ProductAdapter(
         val product = products[position]
 
         // Usar imagen por defecto (ing_maria.png) para todos los productos por ahora
-        holder.productImage.setImageResource(R.drawable.ing_maria)
+        holder.productImage.setImageResource(product.image)
 
         holder.productName.text = product.name
         holder.productDescription.text = product.description
