@@ -3,6 +3,69 @@
     <!-- STRING CRÍTICO PARA ANDROID MANIFEST -->
     <string name="app_name">ArquíTech Solutions</string>
 
+    <string name="english">Inglés</string>
+    <string name="portuguese">Portugués</string>
+
+    <!-- MISSING STRINGS FOR LAYOUTS -->
+    <string name="precio">Precio:</string>
+    <string name="servicios">Servicios</string>
+    <string name="contactenos">Contáctenos</string>
+    <string name="configuracion">Configuración</string>
+    <string name="idioma_aplicacion">Idioma de la aplicación</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="cambiar_contrasena">Cambiar Contraseña</string>
+    <string name="notificaciones_push">Notificaciones Push</string>
+
+    <!-- STRINGS FOR NEW LAYOUTS -->
+    <string name="sample_quantity_price">2 x $25.99</string>
+    <string name="sample_total_amount">$51.98</string>
+    <string name="sample_order_number">ORD-20231201001</string>
+    <string name="minus_symbol">-</string>
+    <string name="plus_symbol">+</string>
+    <string name="default_quantity">1</string>
+    <string name="remove_symbol">❌</string>
+
+    <!-- STRINGS FOR KOTLIN -->
+    <string name="day">día</string>
+    <string name="unit">unidad</string>
+    <string name="no_more_stock">No hay más stock disponible</string>
+    <string name="rental_suffix">Alquiler</string>
+    <string name="quantity">Cantidad</string>
+    <string name="error_invalid_card">Número de tarjeta inválido</string>
+    <string name="error_invalid_expiry">Fecha de expiración inválida</string>
+    <string name="error_invalid_cvv">CVV inválido</string>
+    <string name="error_empty_card_holder">Ingrese el nombre del titular</string>
+    <string name="error_empty_address">Ingrese la dirección de envío</string>
+    <string name="error_empty_city">Ingrese la ciudad</string>
+    <string name="error_empty_zip_code">Ingrese el código postal</string>
+    <string name="connection_error">Error de conexión</string>
+    <string name="card_ending">Tarjeta terminada en</string>
+    <string name="payment_error_title">❌ Error en el Pago</string>
+    <string name="payment_error_message">No se pudo procesar el pago</string>
+    <string name="retry">Reintentar</string>
+    <string name="dark_mode_enabled">Modo oscuro activado</string>
+    <string name="light_mode_enabled">Modo claro activado</string>
+    <string name="notifications_enabled">Notificaciones activadas</string>
+    <string name="notifications_disabled">Notificaciones desactivadas</string>
+    <string name="change_password_development">Funcionalidad de cambio de contraseña en desarrollo</string>
+    <string name="select_language">Seleccionar idioma</string>
+    <string name="language_changed_to">Idioma cambiado a</string>
+    <string name="version">Versión</string>
+    <string name="sale">Venta</string>
+    <string name="rent">Renta</string>
+    <string name="rent_button">📅 Alquilar</string>
+    <string name="buy_button">🛒 Comprar</string>
+    <string name="out_of_stock">❌ Agotado</string>
+    <string name="last_units">⚠️ Últimas</string>
+    <string name="stock">Stock</string>
+    <string name="product_detail">Detalle de</string>
+    <string name="added_to_cart">añadido al carrito</string>
+    <string name="categories">📂 Categorías</string>
+    <string name="equipment">🔧 Equipos</string>
+    <string name="safety">🦺 Seguridad</string>
+    <string name="electricity">⚡ Electricidad</string>
+    <string name="plumbing">🚰 Fontanería</string>
+
     <!-- STRINGS PARA LOGIN ACTIVITY -->
     <string name="error_empty_fields">Por favor, complete todos los campos</string>
     <string name="error_invalid_email">Por favor, ingrese un email válido</string>
@@ -29,7 +92,7 @@
     <string name="generic_error">Error en la operación</string>
     <string name="unknown_error">Error desconocido</string>
 
-    <!-- EXISTING STRINGS (keep these) -->
+    <!-- EXISTING STRINGS -->
     <string name="login">Iniciar Sesión</string>
     <string name="registrarse">Registrarse</string>
     <string name="arquitech">ArquíTech</string>
@@ -201,7 +264,7 @@
     <string name="product_description">Descripción del producto</string>
     <string name="default_price">$0.00</string>
     <string name="rent_price">Renta: $0.00/día</string>
-    <string name="stock">Stock: 0</string>
+    <string name="stock_with_value">Stock: 0</string>
     <string name="add_to_cart">🛒 Añadir</string>
     <string name="processing_status">🔄 Procesando</string>
     <string name="sample_date">01/12/2023 14:30</string>
@@ -212,5 +275,4 @@
     <string name="desc_activity_icon">Icono de actividad</string>
     <string name="producto_foto_desc">Foto del producto</string>
     <string name="cart">Carrito de compras</string>
-
 </resources>

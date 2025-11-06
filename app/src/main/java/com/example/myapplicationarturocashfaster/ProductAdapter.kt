@@ -42,32 +42,32 @@ class ProductAdapter(
         holder.productDescription.text = product.description
 
         if (product.isForRent) {
-            holder.productPrice.text = "Venta: $${product.price}"
-            holder.rentPrice.text = "💰 Renta: $${product.rentPricePerDay}/día"
+            holder.productPrice.text = "${getString(holder.itemView.context, R.string.sale)}: $${product.price}"
+            holder.rentPrice.text = "${getString(holder.itemView.context, R.string.rent)}: $${product.rentPricePerDay}/${getString(holder.itemView.context, R.string.day)}"
             holder.rentPrice.visibility = View.VISIBLE
-            holder.btnAddToCart.text = "📅 Alquilar"
+            holder.btnAddToCart.text = getString(holder.itemView.context, R.string.rent_button)
         } else {
             holder.productPrice.text = "$${product.price}"
             holder.rentPrice.visibility = View.GONE
-            holder.btnAddToCart.text = "🛒 Comprar"
+            holder.btnAddToCart.text = getString(holder.itemView.context, R.string.buy_button)
         }
 
         // Indicador de stock
         when {
             product.stock == 0 -> {
-                holder.stockIndicator.text = "❌ Agotado"
+                holder.stockIndicator.text = getString(holder.itemView.context, R.string.out_of_stock)
                 holder.stockIndicator.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red))
                 holder.btnAddToCart.isEnabled = false
                 holder.btnAddToCart.alpha = 0.5f
             }
             product.stock < 5 -> {
-                holder.stockIndicator.text = "⚠️ Últimas ${product.stock} unidades"
+                holder.stockIndicator.text = "${getString(holder.itemView.context, R.string.last_units)} ${product.stock}"
                 holder.stockIndicator.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.orange))
                 holder.btnAddToCart.isEnabled = true
                 holder.btnAddToCart.alpha = 1f
             }
             else -> {
-                holder.stockIndicator.text = "✅ Stock: ${product.stock}"
+                holder.stockIndicator.text = "${getString(holder.itemView.context, R.string.stock)}: ${product.stock}"
                 holder.stockIndicator.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
                 holder.btnAddToCart.isEnabled = true
                 holder.btnAddToCart.alpha = 1f
@@ -84,4 +84,8 @@ class ProductAdapter(
     }
 
     override fun getItemCount() = products.size
+
+    private fun getString(context: android.content.Context, resId: Int): String {
+        return context.getString(resId)
+    }
 }

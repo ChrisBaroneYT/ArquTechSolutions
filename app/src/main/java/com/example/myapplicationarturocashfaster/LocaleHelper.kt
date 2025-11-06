@@ -79,9 +79,9 @@ object LocaleHelper {
 
     fun getLanguageCode(languageName: String): String {
         return when (languageName) {
-            "Español" -> "es"
-            "English" -> "en"
-            "Português" -> "pt"
+            "Español", "Spanish" -> "es"
+            "English", "Inglés" -> "en"
+            "Português", "Portuguese" -> "pt"
             else -> "es"
         }
     }

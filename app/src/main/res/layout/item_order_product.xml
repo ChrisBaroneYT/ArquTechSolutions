@@ -16,7 +16,7 @@
             android:id="@+id/tvProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Product Name"
+            android:text="@string/product_name"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface" />
@@ -25,7 +25,7 @@
             android:id="@+id/tvProductQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2 x $25.99"
+            android:text="@string/sample_quantity_price"
             android:textSize="12sp"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginTop="2dp" />
@@ -42,7 +42,7 @@
             android:id="@+id/tvProductPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$25.99"
+            android:text="@string/sample_amount"
             android:textSize="12sp"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -50,7 +50,7 @@
             android:id="@+id/tvProductTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$51.98"
+            android:text="@string/sample_total_amount"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="?attr/colorPrimary"

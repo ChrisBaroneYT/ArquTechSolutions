@@ -78,7 +78,7 @@ class CartActivity : BaseActivity() {
                 val intent = Intent(this, CheckoutActivity::class.java)
                 startActivity(intent)
             } else {
-                android.widget.Toast.makeText(this, "El carrito está vacío", android.widget.Toast.LENGTH_SHORT).show()
+                android.widget.Toast.makeText(this, getString(R.string.empty_cart), android.widget.Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -86,9 +86,9 @@ class CartActivity : BaseActivity() {
     private fun updateCartSummary() {
         val summary = CartManager.getCartSummary(this)
 
-        tvSubtotal.text = "Subtotal: $${String.format("%.2f", summary.subtotal)}"
-        tvIVA.text = "IVA (16%): $${String.format("%.2f", summary.iva)}"
-        tvTotal.text = "Total: $${String.format("%.2f", summary.total)}"
+        tvSubtotal.text = "${getString(R.string.subtotal)} $${String.format("%.2f", summary.subtotal)}"
+        tvIVA.text = "${getString(R.string.tax_iva)} $${String.format("%.2f", summary.iva)}"
+        tvTotal.text = "${getString(R.string.total)} $${String.format("%.2f", summary.total)}"
 
         btnCheckout.isEnabled = summary.items.isNotEmpty()
     }

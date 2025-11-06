@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -75,24 +74,25 @@ class SettingsActivity : BaseActivity() {
             AppCompatDelegate.setDefaultNightMode(nightMode)
 
             val message = if (isChecked) {
-                "Modo oscuro activado"
+                getString(R.string.dark_mode_enabled)
             } else {
-                "Modo claro activado"
+                getString(R.string.light_mode_enabled)
             }
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
         // Notificaciones
         notificationsSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Toast.makeText(this, "Notificaciones activadas", Toast.LENGTH_SHORT).show()
+            val message = if (isChecked) {
+                getString(R.string.notifications_enabled)
             } else {
-                Toast.makeText(this, "Notificaciones desactivadas", Toast.LENGTH_SHORT).show()
+                getString(R.string.notifications_disabled)
             }
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             saveSetting("notifications", isChecked)
         }
 
-        // Idioma - MODIFICADO: Ahora cambia el idioma de toda la app
+        // Idioma
         languageOption.setOnClickListener {
             showLanguageDialog()
         }
@@ -105,7 +105,7 @@ class SettingsActivity : BaseActivity() {
 
         // Cambiar Contraseña
         changePasswordOption.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad de cambio de contraseña en desarrollo", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.change_password_development), Toast.LENGTH_SHORT).show()
         }
 
         // Botón Atrás
@@ -114,16 +114,19 @@ class SettingsActivity : BaseActivity() {
         }
     }
 
-    // NUEVO: Diálogo mejorado para selección de idioma
     private fun showLanguageDialog() {
-        val languages = arrayOf("Español", "English", "Português")
+        val languages = arrayOf(
+            getString(R.string.spanish),
+            getString(R.string.english),
+            getString(R.string.portuguese)
+        )
         val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
         val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
 
         val currentIndex = languages.indexOf(currentLanguageName)
 
         android.app.AlertDialog.Builder(this)
-            .setTitle("Seleccionar idioma")
+            .setTitle(getString(R.string.select_language))
             .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
                 val selectedLanguageName = languages[which]
                 val selectedLanguageCode = LocaleHelper.getLanguageCode(selectedLanguageName)
@@ -132,7 +135,7 @@ class SettingsActivity : BaseActivity() {
                 changeAppLanguage(selectedLanguageCode, selectedLanguageName)
                 dialog.dismiss()
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
@@ -143,14 +146,23 @@ class SettingsActivity : BaseActivity() {
         // Aplicar el nuevo idioma usando LocaleHelper
         LocaleHelper.setLocale(this, languageCode)
 
-        // Actualizar la interfaz
-        tvCurrentLanguage.text = languageName
+        // Actualizar la interfaz inmediatamente
+        updateUIWithNewLanguage(languageName)
 
         // Mostrar mensaje
-        Toast.makeText(this, "Idioma cambiado a: $languageName", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${getString(R.string.language_changed_to)}: $languageName", Toast.LENGTH_SHORT).show()
 
-        // Reiniciar TODA la aplicación para aplicar el idioma
+        // Reiniciar TODA la aplicación para aplicar el idioma completamente
         restartApp()
+    }
+
+    // Función para actualizar la UI inmediatamente después del cambio de idioma
+    private fun updateUIWithNewLanguage(languageName: String) {
+        tvCurrentLanguage.text = languageName
+
+        // También puedes actualizar otros textos si es necesario
+        // Por ejemplo, el título de la actividad
+        supportActionBar?.title = getString(R.string.settings)
     }
 
     // Función para reiniciar toda la aplicación
@@ -159,15 +171,6 @@ class SettingsActivity : BaseActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finishAffinity() // Cierra todas las actividades
-    }
-
-    // NUEVA FUNCIÓN: Reiniciar la actividad para aplicar el nuevo idioma
-    private fun recreateActivity() {
-        val intent = Intent(this, SettingsActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        finish()
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun loadCurrentSettings() {
@@ -180,7 +183,7 @@ class SettingsActivity : BaseActivity() {
         val notificationsEnabled = sharedPreferences.getBoolean("notifications", true)
         notificationsSwitch.isChecked = notificationsEnabled
 
-        // Idioma - MODIFICADO: Usar LocaleHelper
+        // Idioma
         val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
         val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
         tvCurrentLanguage.text = currentLanguageName
@@ -190,9 +193,9 @@ class SettingsActivity : BaseActivity() {
         try {
             val packageInfo = packageManager.getPackageInfo(packageName, 0)
             val versionName = packageInfo.versionName
-            tvAppVersion.text = "Versión $versionName"
+            tvAppVersion.text = "${getString(R.string.version)} $versionName"
         } catch (e: Exception) {
-            tvAppVersion.text = "Versión 1.0.0"
+            tvAppVersion.text = "${getString(R.string.version)} 1.0.0"
         }
     }
 

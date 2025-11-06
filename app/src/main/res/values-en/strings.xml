@@ -1,23 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- STRING CRÍTICO PARA ANDROID MANIFEST -->
+    <!-- CRITICAL STRING FOR ANDROID MANIFEST -->
     <string name="app_name">ArquíTech Solutions</string>
 
-    <!-- STRINGS PARA LOGIN ACTIVITY -->
+    <!-- Add these to the existing strings in the English file -->
+    <string name="english">English</string>
+    <string name="portuguese">Portuguese</string>
+
+    <!-- MISSING STRINGS FOR LAYOUTS -->
+    <string name="precio">Price:</string>
+    <string name="servicios">Services</string>
+    <string name="contactenos">Contact Us</string>
+    <string name="configuracion">Settings</string>
+    <string name="idioma_aplicacion">App Language</string>
+    <string name="editar_perfil">Edit Profile</string>
+    <string name="cambiar_contrasena">Change Password</string>
+    <string name="notificaciones_push">Push Notifications</string>
+
+    <!-- STRINGS FOR NEW LAYOUTS -->
+    <string name="sample_quantity_price">2 x $25.99</string>
+    <string name="sample_total_amount">$51.98</string>
+    <string name="sample_order_number">ORD-20231201001</string>
+    <string name="minus_symbol">-</string>
+    <string name="plus_symbol">+</string>
+    <string name="default_quantity">1</string>
+    <string name="remove_symbol">❌</string>
+
+    <!-- STRINGS FOR KOTLIN -->
+    <string name="day">day</string>
+    <string name="unit">unit</string>
+    <string name="no_more_stock">No more stock available</string>
+    <string name="rental_suffix">Rental</string>
+    <string name="quantity">Quantity</string>
+    <string name="error_invalid_card">Invalid card number</string>
+    <string name="error_invalid_expiry">Invalid expiry date</string>
+    <string name="error_invalid_cvv">Invalid CVV</string>
+    <string name="error_empty_card_holder">Enter card holder name</string>
+    <string name="error_empty_address">Enter shipping address</string>
+    <string name="error_empty_city">Enter city</string>
+    <string name="error_empty_zip_code">Enter zip code</string>
+    <string name="connection_error">Connection error</string>
+    <string name="card_ending">Card ending in</string>
+    <string name="payment_error_title">❌ Payment Error</string>
+    <string name="payment_error_message">Could not process payment</string>
+    <string name="retry">Retry</string>
+    <string name="dark_mode_enabled">Dark mode enabled</string>
+    <string name="light_mode_enabled">Light mode enabled</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_disabled">Notifications disabled</string>
+    <string name="change_password_development">Change password functionality in development</string>
+    <string name="select_language">Select language</string>
+    <string name="language_changed_to">Language changed to</string>
+    <string name="version">Version</string>
+    <string name="sale">Sale</string>
+    <string name="rent">Rent</string>
+    <string name="rent_button">📅 Rent</string>
+    <string name="buy_button">🛒 Buy</string>
+    <string name="out_of_stock">❌ Out of stock</string>
+    <string name="last_units">⚠️ Last</string>
+    <string name="stock">Stock</string>
+    <string name="product_detail">Detail of</string>
+    <string name="added_to_cart">added to cart</string>
+    <string name="categories">📂 Categories</string>
+    <string name="equipment">🔧 Equipment</string>
+    <string name="safety">🦺 Safety</string>
+    <string name="electricity">⚡ Electricity</string>
+    <string name="plumbing">🚰 Plumbing</string>
+
+    <!-- STRINGS FOR LOGIN ACTIVITY -->
     <string name="error_empty_fields">Please fill in all fields</string>
     <string name="error_invalid_email">Please enter a valid email</string>
     <string name="logging_in">Logging in...</string>
     <string name="login_success">Login successful</string>
     <string name="login_error">Login error</string>
 
-    <!-- STRINGS PARA REGISTER ACTIVITY -->
+    <!-- STRINGS FOR REGISTER ACTIVITY -->
     <string name="error_passwords_not_match">Passwords do not match</string>
     <string name="error_password_length">Password must be at least 6 characters</string>
     <string name="registering">Registering user...</string>
     <string name="register_success">Registration successful</string>
     <string name="register_error">Registration error</string>
 
-    <!-- STRINGS PARA USER PROFILE ACTIVITY -->
+    <!-- STRINGS FOR USER PROFILE ACTIVITY -->
     <string name="please_login">Please log in</string>
     <string name="logout_confirmation_title">Logout</string>
     <string name="logout_confirmation_message">Are you sure you want to log out?</string>
@@ -25,7 +89,7 @@
     <string name="cancel">Cancel</string>
     <string name="logout_success">Logout successful</string>
 
-    <!-- STRINGS GENÉRICOS -->
+    <!-- GENERIC STRINGS -->
     <string name="generic_error">Operation error</string>
     <string name="unknown_error">Unknown error</string>
 
@@ -201,7 +265,7 @@
     <string name="product_description">Product description</string>
     <string name="default_price">$0.00</string>
     <string name="rent_price">Rent: $0.00/day</string>
-    <string name="stock">Stock: 0</string>
+    <string name="stock_with_value">Stock: 0</string>
     <string name="add_to_cart">🛒 Add</string>
     <string name="processing_status">🔄 Processing</string>
     <string name="sample_date">12/01/2023 14:30</string>

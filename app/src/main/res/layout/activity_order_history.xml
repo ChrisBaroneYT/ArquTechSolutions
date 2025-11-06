@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📋 Mis Pedidos"
+            android:text="@string/my_orders"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="📭 No tienes pedidos aún\n\nRealiza tu primera compra para ver tu historial aquí"
+        android:text="@string/empty_orders"
         android:textSize="18sp"
         android:textColor="?attr/colorOnSurfaceVariant"
         android:gravity="center"
@@ -49,7 +49,7 @@
         android:id="@+id/btnBackToStore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🛍️ Volver a la Tienda"
+        android:text="@string/back_to_store"
         android:layout_margin="16dp"
         style="@style/Widget.Material3.Button.OutlinedButton" />
 

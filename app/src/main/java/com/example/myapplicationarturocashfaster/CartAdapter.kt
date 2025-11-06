@@ -47,7 +47,7 @@ class CartAdapter(
             product.price
         }
 
-        val priceType = if (product.isForRent) "día" else "unidad"
+        val priceType = if (product.isForRent) getString(holder.itemView.context, R.string.day) else getString(holder.itemView.context, R.string.unit)
         holder.productPrice.text = "$${String.format("%.2f", unitPrice)}/$priceType"
 
         holder.productQuantity.text = cartItem.quantity.toString()
@@ -69,7 +69,7 @@ class CartAdapter(
             } else {
                 android.widget.Toast.makeText(
                     holder.itemView.context,
-                    "No hay más stock disponible",
+                    getString(holder.itemView.context, R.string.no_more_stock),
                     android.widget.Toast.LENGTH_SHORT
                 ).show()
             }
@@ -85,5 +85,9 @@ class CartAdapter(
     fun updateItems(newItems: List<CartItem>) {
         this.cartItems = newItems
         notifyDataSetChanged()
+    }
+
+    private fun getString(context: android.content.Context, resId: Int): String {
+        return context.getString(resId)
     }
 }

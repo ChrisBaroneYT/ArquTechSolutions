@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🏗️ ConstruMax Pro"
+            android:text="@string/constru_max"
             android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -69,7 +69,7 @@
                 android:id="@+id/btnCategories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📂 Todas"
+                android:text="@string/all_categories"
                 android:layout_marginEnd="8dp"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/btnTools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🛠️ Herramientas"
+                android:text="@string/tools"
                 android:layout_marginEnd="8dp"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/btnMaterials"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🏗️ Materiales"
+                android:text="@string/materials"
                 android:layout_marginEnd="8dp"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
@@ -93,7 +93,7 @@
                 android:id="@+id/btnRental"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📦 Alquiler"
+                android:text="@string/rental"
                 style="@style/Widget.Material3.Button.OutlinedButton" />
 
         </LinearLayout>

@@ -29,7 +29,7 @@ class SearchActivity : BaseActivity() {
         setupProducts()
         setupRecyclerView()
         setupSearchListener()
-        setupBackPressedHandler() // ✅ NUEVO: Manejo moderno de back pressed
+        setupBackPressedHandler()
     }
 
     private fun initViews() {
@@ -39,7 +39,7 @@ class SearchActivity : BaseActivity() {
         rvSearchResults = findViewById(R.id.rvSearchResults)
 
         btnBack.setOnClickListener {
-            finish() // ✅ CORREGIDO: Usar finish() en lugar de onBackPressed()
+            finish()
         }
 
         btnClear.setOnClickListener {
@@ -50,7 +50,6 @@ class SearchActivity : BaseActivity() {
         etSearch.requestFocus()
     }
 
-    // ✅ NUEVO: Manejo moderno del botón back
     private fun setupBackPressedHandler() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -97,7 +96,7 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun showProductDetail(product: Product) {
-        android.widget.Toast.makeText(this, "Detalle de: ${product.name}", android.widget.Toast.LENGTH_SHORT).show()
+        android.widget.Toast.makeText(this, "${getString(R.string.product_detail)}: ${product.name}", android.widget.Toast.LENGTH_SHORT).show()
     }
 
     private fun setupSearchListener() {
@@ -130,6 +129,6 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun showAddedToCartMessage(productName: String) {
-        android.widget.Toast.makeText(this, "✅ $productName añadido al carrito", android.widget.Toast.LENGTH_SHORT).show()
+        android.widget.Toast.makeText(this, "✅ $productName ${getString(R.string.added_to_cart)}", android.widget.Toast.LENGTH_SHORT).show()
     }
 }

@@ -57,7 +57,7 @@ class CheckoutActivity : BaseActivity() {
     private fun setupOrderSummary() {
         val summary = CartManager.getCartSummary(this)
         val orderSummary = buildString {
-            append("📦 Resumen del Pedido\n\n")
+            append("${getString(R.string.order_summary_title)}\n\n")
             summary.items.forEach { item ->
                 val product = item.product
                 val price = if (product.isForRent && product.rentPricePerDay != null) {
@@ -66,13 +66,13 @@ class CheckoutActivity : BaseActivity() {
                     product.price
                 }
                 val total = price * item.quantity
-                val type = if (product.isForRent) " (Alquiler)" else ""
+                val type = if (product.isForRent) " (${getString(R.string.rental_suffix)})" else ""
                 append("• ${product.name}$type\n")
-                append("  Cantidad: ${item.quantity} x $${String.format("%.2f", price)} = $${String.format("%.2f", total)}\n\n")
+                append("  ${getString(R.string.quantity)}: ${item.quantity} x $${String.format("%.2f", price)} = $${String.format("%.2f", total)}\n\n")
             }
-            append("Subtotal: $${String.format("%.2f", summary.subtotal)}\n")
-            append("IVA (16%): $${String.format("%.2f", summary.iva)}\n")
-            append("Total: $${String.format("%.2f", summary.total)}")
+            append("${getString(R.string.subtotal)} $${String.format("%.2f", summary.subtotal)}\n")
+            append("${getString(R.string.tax_iva)} $${String.format("%.2f", summary.iva)}\n")
+            append("${getString(R.string.total)} $${String.format("%.2f", summary.total)}")
         }
 
         tvOrderSummary.text = orderSummary
@@ -103,37 +103,37 @@ class CheckoutActivity : BaseActivity() {
 
     private fun validateForm(): Boolean {
         if (etCardNumber.text.toString().trim().length < 16) {
-            etCardNumber.error = "Número de tarjeta inválido"
+            etCardNumber.error = getString(R.string.error_invalid_card)
             return false
         }
 
         if (etExpiryDate.text.toString().trim().length < 5) {
-            etExpiryDate.error = "Fecha de expiración inválida"
+            etExpiryDate.error = getString(R.string.error_invalid_expiry)
             return false
         }
 
         if (etCVV.text.toString().trim().length < 3) {
-            etCVV.error = "CVV inválido"
+            etCVV.error = getString(R.string.error_invalid_cvv)
             return false
         }
 
         if (etCardHolder.text.toString().trim().isEmpty()) {
-            etCardHolder.error = "Ingrese el nombre del titular"
+            etCardHolder.error = getString(R.string.error_empty_card_holder)
             return false
         }
 
         if (etAddress.text.toString().trim().isEmpty()) {
-            etAddress.error = "Ingrese la dirección de envío"
+            etAddress.error = getString(R.string.error_empty_address)
             return false
         }
 
         if (etCity.text.toString().trim().isEmpty()) {
-            etCity.error = "Ingrese la ciudad"
+            etCity.error = getString(R.string.error_empty_city)
             return false
         }
 
         if (etZipCode.text.toString().trim().isEmpty()) {
-            etZipCode.error = "Ingrese el código postal"
+            etZipCode.error = getString(R.string.error_empty_zip_code)
             return false
         }
 
@@ -187,7 +187,7 @@ class CheckoutActivity : BaseActivity() {
                 progressBar.visibility = View.GONE
                 layoutPaymentForm.alpha = 1f
                 btnProcessPayment.isEnabled = true
-                showPaymentError("Error de conexión: ${e.message}")
+                showPaymentError("${getString(R.string.connection_error)}: ${e.message}")
             }
         }
     }
@@ -204,7 +204,7 @@ class CheckoutActivity : BaseActivity() {
             total = cartSummary.total,
             status = OrderStatus.PROCESSING,
             shippingAddress = "${etAddress.text}, ${etCity.text} ${etZipCode.text}",
-            paymentMethod = "Tarjeta terminada en ${etCardNumber.text.toString().takeLast(4)}"
+            paymentMethod = "${getString(R.string.card_ending)} ${etCardNumber.text.toString().takeLast(4)}"
         )
 
         OrderManager.addOrder(order)
@@ -230,10 +230,10 @@ class CheckoutActivity : BaseActivity() {
 
     private fun showPaymentError(message: String) {
         android.app.AlertDialog.Builder(this)
-            .setTitle("❌ Error en el Pago")
-            .setMessage("No se pudo procesar el pago: $message")
-            .setPositiveButton("Reintentar", null)
-            .setNegativeButton("Cancelar") { _, _ ->
+            .setTitle(getString(R.string.payment_error_title))
+            .setMessage("${getString(R.string.payment_error_message)}: $message")
+            .setPositiveButton(getString(R.string.retry), null)
+            .setNegativeButton(getString(R.string.cancel)) { _, _ ->
                 finish()
             }
             .show()

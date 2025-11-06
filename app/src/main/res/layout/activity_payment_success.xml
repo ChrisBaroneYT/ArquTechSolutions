@@ -14,14 +14,14 @@
         android:layout_height="120dp"
         android:src="@android:drawable/stat_notify_sync_noanim"
         android:tint="@color/green"
-        android:contentDescription="Pago exitoso"
+        android:contentDescription="@string/payment_success"
         android:layout_marginBottom="24dp" />
 
     <!-- Mensaje de Éxito -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🎉 ¡Pago Exitoso!"
+        android:text="@string/payment_success"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="?attr/colorOnSurface"
@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tu pedido ha sido procesado exitosamente. Recibirás una confirmación por email."
+        android:text="@string/payment_success_message"
         android:textSize="16sp"
         android:textColor="?attr/colorOnSurfaceVariant"
         android:gravity="center"
@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📋 Detalles del Pedido"
+                android:text="@string/order_details"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
@@ -73,7 +73,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Número de Orden:"
+                    android:text="@string/order_number_label"
                     android:textSize="14sp"
                     android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/tvOrderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ORD-20231201001"
+                    android:text="@string/sample_order_number"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorOnSurface" />
@@ -98,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total Pagado:"
+                    android:text="@string/total_paid"
                     android:textSize="14sp"
                     android:textColor="?attr/colorOnSurfaceVariant" />
 
@@ -106,7 +106,7 @@
                     android:id="@+id/tvTotalAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0.00"
+                    android:text="@string/default_price"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorPrimary" />
@@ -128,7 +128,7 @@
             android:id="@+id/btnBackToStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🛍️ Seguir Comprando"
+            android:text="@string/continue_shopping"
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingVertical="14dp"
@@ -139,7 +139,7 @@
             android:id="@+id/btnViewOrders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📋 Ver Mis Pedidos"
+            android:text="@string/view_orders"
             android:textSize="14sp"
             android:paddingVertical="12dp"
             style="@style/Widget.Material3.Button.OutlinedButton" />

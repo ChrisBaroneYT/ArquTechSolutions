@@ -59,7 +59,7 @@
                         android:id="@+id/tvDashboardUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Carlos Sánchez"
+                        android:text="@string/user_name"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -69,7 +69,7 @@
                         android:id="@+id/tvDashboardUserEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="car.enc@gmail.com"
+                        android:text="@string/user_email"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:alpha="0.9" />
@@ -92,7 +92,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Navegación Rápida"
+            android:text="@string/quick_navigation"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -134,7 +134,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Servicios"
+                        android:text="@string/services_nav"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -172,7 +172,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Contáctenos"
+                        android:text="@string/contact_nav"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -210,7 +210,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Inicio"
+                        android:text="@string/home"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -248,7 +248,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Configuración"
+                        android:text="@string/settings_nav"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -264,7 +264,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ArquíTech Solutions"
+            android:text="@string/app_name"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -287,7 +287,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Soluciones Arquitectónicas Profesionales"
+                    android:text="@string/professional_solutions"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/purple_500"
@@ -297,7 +297,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Especialistas en diseño, planos y supervisión de proyectos arquitectónicos. Calidad y profesionalismo garantizado."
+                    android:text="@string/company_description"
                     android:textSize="14sp"
                     android:textColor="@color/gray_dark"
                     android:lineSpacingExtra="4dp"

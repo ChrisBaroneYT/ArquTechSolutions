@@ -38,7 +38,7 @@ class MainActivity : BaseActivity() {
     private lateinit var btnNavBookings: Button
     private lateinit var btnNavProfile: Button
     private lateinit var btnNavStore: Button
-    private lateinit var btnNavSettings: Button // ✅ DECLARADO
+    private lateinit var btnNavSettings: Button
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var layoutNotLoggedIn: LinearLayout
     private lateinit var layoutLoggedIn: LinearLayout
@@ -287,7 +287,7 @@ class MainActivity : BaseActivity() {
         btnNavBookings = findViewById(R.id.btnNavBookings)
         btnNavProfile = findViewById(R.id.btnNavProfile)
         btnNavStore = findViewById(R.id.btnNavStore)
-        btnNavSettings = findViewById(R.id.btnNavSettings) // ✅ INICIALIZADO
+        btnNavSettings = findViewById(R.id.btnNavSettings)
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
         layoutNotLoggedIn = findViewById(R.id.layoutNotLoggedIn)
@@ -311,7 +311,6 @@ class MainActivity : BaseActivity() {
             navigateToStore()
         }
 
-        // ✅ AGREGAR ESTE LISTENER - ES LO QUE FALTABA
         btnNavSettings.setOnClickListener {
             navigateToSettings()
         }
@@ -366,7 +365,7 @@ class MainActivity : BaseActivity() {
 
             layoutNotLoggedIn.visibility = View.GONE
             layoutLoggedIn.visibility = View.VISIBLE
-            tvWelcomeUser.text = "¡Hola, $formattedUsername!"
+            tvWelcomeUser.text = "${getString(R.string.hello_user)} $formattedUsername!"
 
             btnLogoutMain.setOnClickListener {
                 showLogoutConfirmation()
@@ -379,12 +378,12 @@ class MainActivity : BaseActivity() {
 
     private fun showLogoutConfirmation() {
         android.app.AlertDialog.Builder(this)
-            .setTitle("Cerrar Sesión")
-            .setMessage("¿Estás seguro de que quieres cerrar sesión?")
-            .setPositiveButton("Sí") { _, _ ->
+            .setTitle(getString(R.string.logout_confirmation_title))
+            .setMessage(getString(R.string.logout_confirmation_message))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
                 logoutUser()
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
@@ -395,7 +394,7 @@ class MainActivity : BaseActivity() {
         editor.remove("email")
         editor.apply()
 
-        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
         updateUserInterface()
     }
 

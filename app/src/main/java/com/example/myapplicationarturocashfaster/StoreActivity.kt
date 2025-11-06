@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton // ✅ Import correcto
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,7 +14,7 @@ class StoreActivity : BaseActivity() {
 
     private lateinit var rvProducts: RecyclerView
     private lateinit var tvCartCount: TextView
-    private lateinit var btnViewCart: ImageButton // ✅ CORREGIDO: ImageButton en lugar de Button
+    private lateinit var btnViewCart: ImageButton
     private lateinit var btnCategories: Button
     private lateinit var btnTools: Button
     private lateinit var btnMaterials: Button
@@ -36,7 +36,7 @@ class StoreActivity : BaseActivity() {
     private fun initViews() {
         rvProducts = findViewById(R.id.rvProducts)
         tvCartCount = findViewById(R.id.tvCartCount)
-        btnViewCart = findViewById(R.id.btnViewCart) // ✅ Ahora funciona correctamente
+        btnViewCart = findViewById(R.id.btnViewCart)
         btnCategories = findViewById(R.id.btnCategories)
         btnTools = findViewById(R.id.btnTools)
         btnMaterials = findViewById(R.id.btnMaterials)
@@ -101,7 +101,7 @@ class StoreActivity : BaseActivity() {
     }
 
     private fun showProductDetail(product: Product) {
-        android.widget.Toast.makeText(this, "Detalle de: ${product.name}", android.widget.Toast.LENGTH_SHORT).show()
+        android.widget.Toast.makeText(this, "${getString(R.string.product_detail)}: ${product.name}", android.widget.Toast.LENGTH_SHORT).show()
     }
 
     private fun filterProductsByCategory(category: ProductCategory) {
@@ -117,29 +117,29 @@ class StoreActivity : BaseActivity() {
     }
 
     private fun showAddedToCartMessage(productName: String) {
-        android.widget.Toast.makeText(this, "✅ $productName añadido al carrito", android.widget.Toast.LENGTH_SHORT).show()
+        android.widget.Toast.makeText(this, "✅ $productName ${getString(R.string.added_to_cart)}", android.widget.Toast.LENGTH_SHORT).show()
     }
 
     private fun showCategoriesDialog() {
         val categories = ProductCategory.values().map {
             when (it) {
-                ProductCategory.HERRAMIENTAS -> "🛠️ Herramientas"
-                ProductCategory.MATERIALES -> "🏗️ Materiales"
-                ProductCategory.EQUIPOS -> "🔧 Equipos"
-                ProductCategory.SEGURIDAD -> "🦺 Seguridad"
-                ProductCategory.ALQUILER -> "📦 Alquiler"
-                ProductCategory.ELECTRICIDAD -> "⚡ Electricidad"
-                ProductCategory.FONTANERIA -> "🚰 Fontanería"
+                ProductCategory.HERRAMIENTAS -> getString(R.string.tools)
+                ProductCategory.MATERIALES -> getString(R.string.materials)
+                ProductCategory.EQUIPOS -> getString(R.string.equipment)
+                ProductCategory.SEGURIDAD -> getString(R.string.safety)
+                ProductCategory.ALQUILER -> getString(R.string.rental)
+                ProductCategory.ELECTRICIDAD -> getString(R.string.electricity)
+                ProductCategory.FONTANERIA -> getString(R.string.plumbing)
             }
         }
 
         android.app.AlertDialog.Builder(this)
-            .setTitle("📂 Categorías")
+            .setTitle(getString(R.string.categories))
             .setItems(categories.toTypedArray()) { dialog, which ->
                 val selectedCategory = ProductCategory.values()[which]
                 filterProductsByCategory(selectedCategory)
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 

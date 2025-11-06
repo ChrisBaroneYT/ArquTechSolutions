@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Configuración"
+                android:text="@string/settings"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black" />
@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Apariencia"
+                    android:text="@string/appearance"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -84,7 +84,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Modo Oscuro"
+                        android:text="@string/dark_mode"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -118,7 +118,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Idioma"
+                    android:text="@string/language"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -146,7 +146,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Idioma de la aplicación"
+                        android:text="@string/idioma_aplicacion"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -154,7 +154,7 @@
                         android:id="@+id/tvCurrentLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Español"
+                        android:text="@string/spanish"
                         android:textSize="14sp"
                         android:textColor="@color/gray_dark"
                         android:layout_marginEnd="8dp" />
@@ -188,7 +188,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cuenta"
+                    android:text="@string/account"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -218,7 +218,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Editar Perfil"
+                        android:text="@string/editar_perfil"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -240,7 +240,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:id="@+id/changePasswordOption"
-                    android:paddingVertical="16px">
+                    android:paddingVertical="16dp">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -253,7 +253,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Cambiar Contraseña"
+                        android:text="@string/cambiar_contrasena"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -286,7 +286,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Notificaciones"
+                    android:text="@string/notifications"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -311,7 +311,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Notificaciones Push"
+                        android:text="@string/notificaciones_push"
                         android:textSize="16sp"
                         android:textColor="@color/black" />
 
@@ -346,7 +346,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ArquíTech Solutions"
+                    android:text="@string/app_name"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/purple_500"
@@ -357,7 +357,7 @@
                     android:id="@+id/tvAppVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Versión 1.0.0"
+                    android:text="@string/app_version"
                     android:textSize="14sp"
                     android:textColor="@color/gray_dark"
                     android:gravity="center" />
