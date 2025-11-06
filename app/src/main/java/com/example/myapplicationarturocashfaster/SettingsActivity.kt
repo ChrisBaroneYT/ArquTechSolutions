@@ -23,6 +23,14 @@ class SettingsActivity : BaseActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private var isThemeChanging = false
 
+    // Arrays para los idiomas
+    private val languageCodes = arrayOf("es", "en", "pt")
+    private val languageNames = arrayOf(
+        "Español",
+        "English",
+        "Português"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +47,7 @@ class SettingsActivity : BaseActivity() {
         setupBackPressedHandler()
 
         Log.d("SETTINGS_DEBUG", "✅ SettingsActivity creada correctamente")
+        Log.d("LANGUAGE_DEBUG", "Idioma actual: ${getCurrentLanguageCode()} - ${getCurrentLanguageName()}")
     }
 
     private fun initViews() {
@@ -115,23 +124,23 @@ class SettingsActivity : BaseActivity() {
     }
 
     private fun showLanguageDialog() {
-        val languages = arrayOf(
+        val currentLanguageCode = getCurrentLanguageCode()
+        val currentIndex = languageCodes.indexOf(currentLanguageCode)
+
+        val dialogLanguageNames = arrayOf(
             getString(R.string.spanish),
             getString(R.string.english),
             getString(R.string.portuguese)
         )
-        val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
-        val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
-
-        val currentIndex = languages.indexOf(currentLanguageName)
 
         android.app.AlertDialog.Builder(this)
             .setTitle(getString(R.string.select_language))
-            .setSingleChoiceItems(languages, currentIndex) { dialog, which ->
-                val selectedLanguageName = languages[which]
-                val selectedLanguageCode = LocaleHelper.getLanguageCode(selectedLanguageName)
+            .setSingleChoiceItems(dialogLanguageNames, currentIndex) { dialog, which ->
+                val selectedLanguageCode = languageCodes[which]
+                val selectedLanguageName = languageNames[which]
 
-                // Cambiar el idioma inmediatamente
+                Log.d("LANGUAGE_DEBUG", "Idioma seleccionado: $selectedLanguageCode - $selectedLanguageName")
+
                 changeAppLanguage(selectedLanguageCode, selectedLanguageName)
                 dialog.dismiss()
             }
@@ -140,37 +149,26 @@ class SettingsActivity : BaseActivity() {
     }
 
     private fun changeAppLanguage(languageCode: String, languageName: String) {
+        // Verificar si el idioma es diferente al actual
+        if (languageCode == getCurrentLanguageCode()) {
+            Log.d("LANGUAGE_DEBUG", "El idioma ya está establecido: $languageCode")
+            return
+        }
+
+        Log.d("LANGUAGE_DEBUG", "Cambiando idioma a: $languageCode")
+
         // Guardar la preferencia de idioma
         saveSetting("language", languageCode)
 
         // Aplicar el nuevo idioma usando LocaleHelper
         LocaleHelper.setLocale(this, languageCode)
 
-        // Actualizar la interfaz inmediatamente
-        updateUIWithNewLanguage(languageName)
-
         // Mostrar mensaje
-        Toast.makeText(this, "${getString(R.string.language_changed_to)}: $languageName", Toast.LENGTH_SHORT).show()
+        val message = "${getString(R.string.language_changed_to)}: $languageName"
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
         // Reiniciar TODA la aplicación para aplicar el idioma completamente
         restartApp()
-    }
-
-    // Función para actualizar la UI inmediatamente después del cambio de idioma
-    private fun updateUIWithNewLanguage(languageName: String) {
-        tvCurrentLanguage.text = languageName
-
-        // También puedes actualizar otros textos si es necesario
-        // Por ejemplo, el título de la actividad
-        supportActionBar?.title = getString(R.string.settings)
-    }
-
-    // Función para reiniciar toda la aplicación
-    private fun restartApp() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        finishAffinity() // Cierra todas las actividades
     }
 
     private fun loadCurrentSettings() {
@@ -183,10 +181,10 @@ class SettingsActivity : BaseActivity() {
         val notificationsEnabled = sharedPreferences.getBoolean("notifications", true)
         notificationsSwitch.isChecked = notificationsEnabled
 
-        // Idioma
-        val currentLanguageCode = LocaleHelper.getPersistedLocale(this)
-        val currentLanguageName = LocaleHelper.getLanguageName(currentLanguageCode)
+        // Idioma - Usar el helper para obtener el nombre correcto
+        val currentLanguageName = getCurrentLanguageName()
         tvCurrentLanguage.text = currentLanguageName
+        Log.d("LANGUAGE_DEBUG", "Idioma cargado en UI: $currentLanguageName")
     }
 
     private fun setupAppVersion() {
@@ -243,6 +241,10 @@ class SettingsActivity : BaseActivity() {
         super.onResume()
         isThemeChanging = false
         logCurrentTheme()
+
+        // Actualizar el idioma en caso de que haya cambiado
+        val currentLanguageName = getCurrentLanguageName()
+        tvCurrentLanguage.text = currentLanguageName
     }
 
     override fun onPause() {
